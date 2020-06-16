@@ -191,7 +191,7 @@ window.onload = wrap_img;
 <h2 id="Lineer-Regresyonun-Temel-Ögeleri">
 <a class="anchor" href="#Lineer-Regresyonun-Temel-%C3%96geleri" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lineer Regresyonun Temel Ögeleri<a class="anchor-link" href="#Lineer-Regresyonun-Temel-%C3%96geleri"> </a>
 </h2>
-<p><em>Lineer regresyon</em>, standart regresyon araçları arasında hem en popüler hem de en basit olanıdır. Geçmişi 19. Yüzyıla dayanan lineer regresyon basit bir kabülden yola çıkar. Öncelikle $\mathbf{x}$ bağımsız değişkenleri ile $y$ bağımlı değişkeninin lineer olarak bağlantılı olduğunu kabul ederiz. Yani $y$ değişkeni $\mathbf{x}$ vektörünün bileşenlerinin lineer birleşimi ile gözlem hatasınının toplamıdır. İkincisi gözlem hatası düzenlidir, özel olarak Gauss dağılımına sahiptir.</p>
+<p><em>Lineer regresyon</em>, standart regresyon araçları arasında hem en popüler hem de en basit olanıdır. Geçmişi 19. Yüzyıla dayanan lineer regresyon basit bir kabülden yola çıkar. Öncelikle $\mathbf{x}$ bağımsız değişkenleri ile $y$ bağımlı değişkeninin lineer olarak bağlantılı olduğunu kabul ederiz. Yani $y$ değişkeni $\mathbf{x}$ vektörünün bileşenlerinin lineer birleşimi ile gözlem hatasınının toplamıdır. İkincisi, gözlem hatasının düzenli olduğunu kabul ederiz(özel olarak Gauss dağılımına sahiptir).</p>
 <p>Amacımızı daha iyi ifade etmek için bir örnek kullanalım. Ev fiyatlarını alanına ve yaşına göre tahmin etmek istiyoruz. Bu kestirimi yapabilmek amacıyla uygulayacağımız model için fiyatını, alanını ve yaşını bildiğimiz satış verisine (data set) ihtiyacımız var. Makine Öğrenmesi terminolojisinde veriye <em>eğitim seti</em> (training set) ve bu kümenin elemanlarına (bu örnekte her bir satış oluyor) bir <em>örnek</em> ya da <em>veri noktası</em> denir. Bu örnekteki fiyat gibi tahmin etmeye çalıştığımız şeye <em>etiket</em> (label) ya da <em>hedef</em> (target) denir. Örneğimizdeki evin alanı ve yaşı gibi bağımsız değişkenlere <em>özellikler</em> (features) denir.</p>
 <p>Veri kümemizdeki örneklerin sayısını $n$ ile gösteriyoruz. Veri örneklerini indekslemek için $i$ harfini kullanacağız. Dolayısyla $y^{(i)}$ etiketine karşılık gelen özellikler $\mathbf{x}^{(i)} = [x_1^{(i)}, x_2^{(i)}]^\top$ ile gösterilecektir.</p>
 <h3 id="Lineer-Model">
@@ -201,9 +201,9 @@ window.onload = wrap_img;
 <p>
 $$fiyat = w_{\textrm{alan}} \cdot \textrm{alan} + w_\textrm{yıl} \cdot \textrm{yıl} + b.$$
 </p>
-<p>Burada , $w_{\textrm{alan}}$ and $w_{\textrm{yıl}}$ katsayılarına <em>ağırlıklar</em>, $b$ sayısına called a <em>yanlılık</em> denir. Ağırlıklar herbir özelliğin (feature) tahminimiz üzerinde ne kadar etkili olduğunu, yanlılık terimi de teüm üzellikler sıfır olduğunda tahmin edilen fiyatın kaç olduğunu belirler. Evin alanı veya yaşı sıfır olmaz ama yanılık terimi modelimizin temsil yeterliliğinin kısıtlanmaması açısından önemlidir.</p>
-<p>Amacımız, elimizdeki veri için $\mathbf{w}$ ağırlılarını $b$ yanlılığını uygun şekilde belirlemektir. Bu sayede modelimizin yaptığı tahminler ile veri kümesindeki gerçek değerler ortalama olarak örtüşmelidir.</p>
-<p>Makine öğrenmesinde yüksek boyutlu veri kümeleri ile çalığılır, yani özelliklerin sayısı çok fazladır. Örneğin bir fotoğrafın her bir pikseli bir özellik olarak alınır. Dolayısıyla matrisler ve vektörler gibi Lineer Cebir araçlarını kullanmak yararlı olur. Herbir veri (girdi), $d$ özelliğe sahip ise $\hat{y}$ tahminimizi</p>
+<p>Burada , $w_{\textrm{alan}}$ and $w_{\textrm{yıl}}$ katsayılarına <em>ağırlıklar</em>, $b$ sayısına <em>yanlılık</em> denir. Ağırlıklar her bir özelliğin (feature) tahminimiz üzerinde ne kadar etkili olduğunu, yanlılık terimi de tüm özellikler sıfır olduğunda tahmin edilen fiyatın kaç olduğunu belirler. Evin alanı veya yaşı sıfır olmaz ama yanlılık terimi modelimizin temsil yeterliliğinin kısıtlanmaması açısından önemlidir.</p>
+<p>Amacımız, elimizdeki veri için $\mathbf{w}$ ağırlılarını ve $b$ yanlılığını uygun şekilde belirlemektir. Bu sayede modelimizin yaptığı tahminler ile veri kümesindeki gerçek değerler ortalama olarak örtüşmelidir.</p>
+<p>Makine öğrenmesinde genellikle yüksek boyutlu veri kümeleri ile çalışılır, yani özelliklerin sayısı çok fazladır. Örneğin bir fotoğrafın her bir pikseli bir özellik olarak alınır. Dolayısıyla matrisler ve vektörler gibi Lineer Cebir araçlarını kullanmak daha yararlı olur. Her bir veri (girdi), $d$ özelliğe sahip ise $\hat{y}$ tahminimizi</p>
 <p>
 $$\hat{y} = w_1  x_1 + ... + w_d  x_d + b.$$
 </p>
@@ -212,13 +212,13 @@ $$\hat{y} = w_1  x_1 + ... + w_d  x_d + b.$$
 $$\hat{y} = \mathbf{w}^\top \mathbf{x} + b$$
 </p>
 <p>nokta çarpımıyla ifade etmiş oluruz.</p>
-<p>Burada $\mathbf{x}$ vektörü bir tek veri örneğine karşılık gelen özellik vektörüdür. Veri kümesi $n$ örnekten oluşsun ve hepsini $\mathbf{X} \in \mathbb{R}^{n \times d}$ matrisinde bir araya getirelim. Burada herbir $\mathbf{x}$ vektörü $\mathbf{X}$ matrisinin bir sütununu oluşturmaktadır. $\mathbf{X}$ matrisine <em>dizayn matrisi</em> veya <em>veri matrisi</em> denir.</p>
+<p>Burada $\mathbf{x}$ vektörü bir tek veri örneğine karşılık gelen özellik vektörüdür. Veri kümesi $n$ örnekten oluşsun ve hepsini $\mathbf{X} \in \mathbb{R}^{n \times d}$ matrisinde bir araya getirelim. Burada her bir $\mathbf{x}$ vektörü $\mathbf{X}$ matrisinin bir satırını oluşturmaktadır. $\mathbf{X}$ matrisine <em>dizayn matrisi</em> veya <em>veri matrisi</em> denir.</p>
 <p>Özelliklerin bir araya getirilmesi ile oluşan $\mathbf{X}$ için  $\hat{\mathbf{y}} \in \mathbb{R}^n$ tahminimiz matris-vektör çarımıyla</p>
 <p>
 $${\hat{\mathbf{y}}} = \mathbf{X} \mathbf{w} + b,$$
 </p>
 <p>biçiminde ifade edilebilir. Burada $b$ vektörü aslında aynı $b$ sayısının $n$ defa yazılmasıyla oluşan vektördür. Python programlamadaki yayımlama (broadcasting) gibi. Lineer regresyonda amaç, $\mathbf{X}$ eğitim kümemizdeki özellikler ve karşılık gelen $\mathbf{y}$ etiketleri için, aynı dağılımdan gelen yeni bir örnek için tahmindeki hatayı beklenen değer olarak en az yapan $\mathbf{w}$  ve $b$ terimlerini bulmaktır.</p>
-<p>$\mathbf{x}$ verildiğinde $y$ için en iyi tahmini veren modelin lineer olduğunu düşünsek de, her $1 \leq i \leq n$ için gerçek $y^{(i)}$ ile $\mathbf{w}^\top \mathbf{x}^{(i)}+b$ tahmininin eşit olmasını bekleyemeyiz. Örneğin $\mathbf{X}$ özellikleri ve $\mathbf{y}$ etiketleri küçük ölçüm hataları yaılmış olabilir. Dolayısıyla, geri landa yatan ilişkinin lineer olduğundan emin olsak bile bu tür küçük hataları ifade eden bir gürültü (noise) terimini de dahil edeceğiz.</p>
+<p>$\mathbf{x}$ verildiğinde $y$ için en iyi tahmini veren modelin lineer olduğunu düşünsek de, her $1 \leq i \leq n$ için gerçek $y^{(i)}$ ile $\mathbf{w}^\top \mathbf{x}^{(i)}+b$ tahmininin eşit olmasını bekleyemeyiz. Örneğin $\mathbf{X}$ özellikleri ve $\mathbf{y}$ etiketleri küçük ölçüm hataları yapılmış olabilir. Dolayısıyla, geri planda yatan ilişkinin lineer olduğundan emin olsak bile bu tür küçük hataları ifade eden bir gürültü (noise) terimini de dahil edeceğiz.</p>
 <p>En iyi $\mathbf{w}$ and $b$ parametrelerini aramaya başlamadan önce iki şey yapmalıyız: (i) modelin kalitesini ölçen bir araç ve (ii) modelin kalitesini iyileştirmek için izlenecek yol.</p>
 <h3 id="Kayıp-Fonksiyonu-(Loss-Function)">
 <a class="anchor" href="#Kay%C4%B1p-Fonksiyonu-(Loss-Function)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kayıp Fonksiyonu (Loss Function)<a class="anchor-link" href="#Kay%C4%B1p-Fonksiyonu-(Loss-Function)"> </a>
@@ -242,25 +242,25 @@ $$\mathbf{w}^*, b^* = \operatorname*{argmin}_{\mathbf{w}, b}\  L(\mathbf{w}, b)$
 <h3 id="Analitik-Çözüm">
 <a class="anchor" href="#Analitik-%C3%87%C3%B6z%C3%BCm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Analitik Çözüm<a class="anchor-link" href="#Analitik-%C3%87%C3%B6z%C3%BCm"> </a>
 </h3>
-<p>Lineer Regreyon az rastlanır ölçüde basit bir optimizasyon problemdir. Karşılaşacağımız birçok modelin aksine lineer regresyon analitik bir şekilde çözülür ve global optimum bulunur. İlk olarak $b$ yanlılık terimini $\mathbf{w}$ arametrelerine eklyelelim buna karşılık dizayn matrisine $1$ sayılarından oluşan bir sütun ekleyelim. Bu durumda tahmin problemimiz $||\mathbf{y} - \mathbf{X}\mathbf{w}||^2$ ifadesini minimize etmeye dönüşür. Bu ikinci dereceden bir ifade olduğu için konvekstir.</p>
+<p>Lineer Regreyon az rastlanır ölçüde basit bir optimizasyon problemidir. Karşılaşacağımız birçok modelin aksine lineer regresyon analitik bir şekilde çözülür ve global optimum bulunur. İlk olarak $b$ yanlılık terimini $\mathbf{w}$ arametrelerine ekleyelelim buna karşılık dizayn matrisine $1$ sayılarından oluşan bir sütun ekleyelim. Bu durumda tahmin problemimiz $||\mathbf{y} - \mathbf{X}\mathbf{w}||^2$ ifadesini minimize etmeye dönüşür. Bu ikinci dereceden bir ifade olduğu için konvekstir ve problem dejenere(özelliklerimiz lineer olarak bağımsız) olmadığından bu ifade kesin konvekstir.</p>
 <p>Dolayısıyla kayıp fonksiyonunun belirttiği yüzey üzerinde bir tek kritik nokta vardır, bu da global minimuma karşılık gelir. Kayıp fonksiyonunun $\mathbf{w}$ üzerinden türevini alıp sıfıra eşitlersek,</p>
 <p>
 $$\mathbf{w}^* = (\mathbf X^\top \mathbf X)^{-1}\mathbf X^\top \mathbf{y}$$
 </p>
-<p>analitik çözümünü elde ederiz. Analitik çözüm matematiksel analiz için yararlı olsa da matrisin tersin içerdiğinden pratikte kullanışsızdır. Derin öğrenmede bu şekilde analitik çözümler neredeyse hiç kullanılmaz.</p>
+<p>analitik çözümünü elde ederiz. Analitik çözüm matematiksel analiz için yararlı olsa da matrisin tersini içerdiğinden pratikte kullanışsızdır. Derin öğrenmede bu şekilde analitik çözümler neredeyse hiç kullanılmaz.</p>
 <h3 id="Gradient-Azalım-(Gradient-descent)">
 <a class="anchor" href="#Gradient-Azal%C4%B1m-(Gradient-descent)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradient Azalım (Gradient descent)<a class="anchor-link" href="#Gradient-Azal%C4%B1m-(Gradient-descent)"> </a>
 </h3>
-<p>Modelimizi analitik olarak çözemezek veya kayıp yüzeyimiz yüksek boyutlu ve konveks olmasa bile pratikte modelimizi etkin bir biçimde eğitebiliriz. Hatta birçok iş için bu optimize edilmesi güç görünen modeller daha kolay eğitilebilirler ve daha kullanılışlı olurlar.</p>
+<p>Modelimizi analitik olarak çözemediğimiz durumlarda ve kayıp yüzeyimiz yüksek boyutlu ve konveks olmasa bile pratikte modelimizi etkin bir biçimde eğitebiliriz. Hatta birçok iş için optimize edilmesi güç görünen bu modeller daha kolay eğitilebilirler ve daha kullanılışlı olurlar.</p>
 <p>Neredeyse tüm Derin Öğrenme modellerinde optimizasyon için kullanılan kilit yöntem, hatayı azaltmak için parametrelerin kayıp fonksiyonunun azaldığı yönde güncellendiği itreratif yöntemdir. Bu algoritmaya <em>gradiyent azalım</em> denir. Konveks yüzeyler için global minimuma eninde sonunda ulaşılır fakat konveks olmayanlar için (genellikle yeterince iyi olan) bir yerel minimuma yönelir.</p>
-<p>Gradiyent azalımı kullanırken kayıp fonksiyonunun verinin tamamı üzerinden türevini almak kaba bir yaklaşım olur çünkü bu veri kümesindeki her bir örnek için elde edilen kayıp değerlerinin ortlamasıdır. Her güncelleme adımında veri kümesinin tamamını tarayacağımızdan hesap çok uzun sürer. Genellikle her güncellemede verinin tamamı yerine örneklerden rastgele bir <em>yığın</em> (batch) alınır. Buna <em>stokastik gradiyent azalım</em> denir.</p>
+<p>Gradiyent azalımı kullanırken kayıp fonksiyonunun verinin tamamı üzerinden türevini almak kaba bir yaklaşım olur çünkü bu veri kümesindeki her bir örnek için elde edilen kayıp değerlerinin ortalamasıdır. Her güncelleme adımında veri kümesinin tamamını tarayacağımızdan hesap çok uzun sürer. Genellikle her güncellemede verinin tamamı yerine örneklerden rastgele bir <em>yığın</em> (batch) alınır. Buna <em>stokastik gradiyent azalım</em> denir.</p>
 <p>Her ötelemede (iteration) belli sayıda örnekten oluşan rastgele küçük bir $\mathcal{B}$ yığını seçilir. Daha sonra yığının ortalama kayıbının model parametrelerine göre türevi (gradiyenti) hesaplanır. Son olarak da gradiyent belli bir $\eta &gt; 0$ adım boyu ile çarpılıp güncel parametre değerinden çıkarılır.</p>
 <p>Güncellemeyi matematiksel olarak şöyle ifade edebiliriz:</p>
 <p>
 $$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b).$$
 </p>
 <p>Burada $\partial$ ile kısmi türev gösterilmektedir. Algoritmanın adımları: (i) parametreler için başlangıç değerleri seçmek, genellikle rastgele seçilir (ii) veriden her bir adım için rastgele yığınlar seçmek ve parametrleri negatif gradiyent doğrultusunda güncellemek olarak özetlenebilir.</p>
-<p>İkinci dereceden kayıplar ve lineer fonksiyonlar için güncellemeyi açık olarak bulabiliriz. Burada $\mathbf{w}$ ve $\mathbf{x}$ vektörlerdir. $w_1, w_2, \ldots, w_d$ bileşenlerini kullanmak yerine vektör gösterimi matematiksel ifadeleri daha okunaklı yapar. Sonuç olarak güncelleme</p>
+<p>İkinci dereceden kayıplar ve lineer fonksiyonlar için güncellemeyi açık olarak bulabiliriz. Burada $\mathbf{w}$ ve $\mathbf{x}$ vektörlerdir. $w_1, w_2, \ldots, w_d$ bileşenlerini kullanmak yerine, vektör gösterimi matematiksel ifadeleri daha okunaklı yapar. Sonuç olarak güncelleme</p>
 $$
 \begin{aligned}
 \mathbf{w} &amp;\leftarrow \mathbf{w} -   \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{\mathbf{w}} l^{(i)}(\mathbf{w}, b) &amp;&amp; =
@@ -269,18 +269,18 @@ b &amp;\leftarrow b -  \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \part
 b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)
 \end{aligned}
 $$<p>biçiminde ifade edilebilir. Yukarıdaki eşitliklerde $|\mathcal{B}|$ ile <em>yığın boyutu</em> (batch size) ve $\eta$ ile de <em>öğrenme parametresi</em> (learining rate) gösterilmektedir. Yığın boyutu ve öğrenme parametresini önceden belirlediğimizi, bunların öğrenilmediğini vurgulamak gerekir. Bu şekilde değiştirilebilen fakat öğrenme sırasında güncellenmeyen parametrelere <em>hiperparametre</em> denir. <em>Hiperparametre ayarlama</em> (hyerparameter tuning), bunların uygun biçimde seçilmesi işlemidir ve eğitim kümesi ile elde edilen sonuçların ayrı bir <em>doğrulama kümesi</em> (validation set) ile denenmesi sayesinde yapılabilir.</p>
-<p>Belli sayıda güncellemeden sonra ya da belli şartlar sağlandığında eğitme (training) durdurulur. Sonra bulduğumuz parametreler kaydedilir. Bu parametreler gerçek parametrelerin tamin edilen değerleridir ve $\hat{\mathbf{w}}, \hat{b}$ ile gösterilirler. Fonksiyonumuz tam olarak lineer olsa ve hiçbir ölçüm hatası olmasa bile elde ettiğimiz bu parametreler tam olarak doğru değildir çünkü algoritmamız sonlu sayıda adımda minimuma ulaşamaz.</p>
+<p>Belli sayıda güncellemeden sonra ya da belli şartlar sağlandığında eğitim (training) durdurulur. Sonra bulduğumuz parametreler kaydedilir. Bu parametreler gerçek parametrelerin tamin edilen değerleridir ve $\hat{\mathbf{w}}, \hat{b}$ ile gösterilirler. Fonksiyonumuz tam olarak lineer olsa ve hiçbir ölçüm hatası olmasa bile elde ettiğimiz bu parametreler tam olarak doğru değildir çünkü algoritmamız sonlu sayıda adımda minimuma ulaşamaz.</p>
 <p>Lineer regresyon, konveks öğrenme problemi olduğundan bir tek (global) minimumu vardır. Daha kamaşık derin ağlarda kayıp yüzeyi üzerinde birçok minimum vardır. Neyse ki derin öğrenmede uygulayıcılar eğitim kümesi üzerinde minimumu bulmada fazla zorlanmazlar ve bunun matematiksel temeli halen çok iyi bilinmemektedir. Daha zor olanı, daha önce kullanmadığımız örnekler üzerinde düşük kayıp değeri veren parametreler bulmaktır. Buna probleme <em>genelleştirme</em> denir. İleride bu konulara değineceğiz.</p>
 <h3 id="Öğrenilen-Model-ile-Tahminler-Yapma-(Estimation)">
 <a class="anchor" href="#%C3%96%C4%9Frenilen-Model-ile-Tahminler-Yapma-(Estimation)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Öğrenilen Model ile Tahminler Yapma (Estimation)<a class="anchor-link" href="#%C3%96%C4%9Frenilen-Model-ile-Tahminler-Yapma-(Estimation)"> </a>
 </h3>
-<p>Öğrenimliş bir $\hat{\mathbf{w}}^\top \mathbf{x} + \hat{b}$ lineer regresyon modeli ile eğriyim kümemizde yer almayan örnekler için tahminde bulunabiliriz. Örneğin alanı $x_1$ ve yılı $x_2$ olan bir evin fiyatını tahmin edebiliriz. Özellikleri verilen hedefi tahmin etme işine <em>kestirim</em> (prediction) veya <em>çıkarım</em> (inference) denir.</p>
+<p>Öğrenimliş bir $\hat{\mathbf{w}}^\top \mathbf{x} + \hat{b}$ lineer regresyon modeli ile eğitim kümemizde yer almayan örnekler için tahminde bulunabiliriz. Örneğin alanı $x_1$ ve yılı $x_2$ olan bir evin fiyatını tahmin edebiliriz. Özellikleri verilen hedefi tahmin etme işine <em>kestirim</em> (prediction) veya <em>çıkarım</em> (inference) denir.</p>
 <p>İstatistikte genellikle çıkarım ile parametrelerin veri kullanılarak tahmini ifade edilir. Dolayısıyla karışıklığa yol açmaması için derin öğrenme için kestirim kullanılacaktır.</p>
 <h3 id="Vektörleştirme-Hızlandırır">
 <a class="anchor" href="#Vekt%C3%B6rle%C5%9Ftirme-H%C4%B1zland%C4%B1r%C4%B1r" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vektörleştirme Hızlandırır<a class="anchor-link" href="#Vekt%C3%B6rle%C5%9Ftirme-H%C4%B1zland%C4%B1r%C4%B1r"> </a>
 </h3>
-<p>Modeli eğitirken tüm küçük veri yığınlarını aynı anda işlemek isteriz. Bunu etkin bir şekilde yamanın yolu, işlemleri vektörleştirmek ve hızlı döngüler (<em>for loop</em> gibi) hızlı lineer cebir kütüphanelerini kullanmaktır.</p>
-<p>Vektörleştirmeye ihtiyacın daha iyi anlaşılması için vektörlerin toplamı için iki metod kullanalım. Önce $1$ rakamlarından oluşan $10000$ boyutlu vektörler alalım. İlk metod için Python'da vektörün bileşenleri üzerinden <code>for</code> döngüsü oluşturacağız. İkincisinde ise sadece bir kez <code>+</code> işlemcisini kullanacağız.</p>
+<p>Modeli eğitirken tüm küçük veri yığınlarını aynı anda işlemek isteriz. Bunu etkin bir şekilde yapmanın yolu, işlemleri vektörleştirmek ve Pythondaki işlem yükü fazla olan döngüler(<em>for loop</em> gibi) yazmak yerine hızlı lineer cebir kütüphanelerini kullanmaktır.</p>
+<p>Vektörleştirmeye ihtiyacın daha iyi anlaşılması için vektörlerin toplamı için iki yöntem kullanalım. Önce $1$ rakamlarından oluşan $10000$ boyutlu vektörler alalım. İlk metod için Python'da vektörün bileşenleri üzerinden <code>for</code> döngüsü oluşturacağız. İkincisinde ise sadece bir kez <code>+</code> işlemcisini kullanacağız.</p>
 
 </div>
 </div>
@@ -331,7 +331,7 @@ $$<p>biçiminde ifade edilebilir. Yukarıdaki eşitliklerde $|\mathcal{B}|$ ile 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Zaman açısından kıyasamayı ileride de sık sık yapacağımızdan, bunun için <code>d2l</code> paketinde erişilmek üzere bir kronometre (timer) sınıfı tanımlayalım.</p>
+<p>Zaman açısından kıyaslamayı ileride de sık sık yapacağımızdan, bunun için <code>d2l</code> paketinde erişilmek üzere bir kronometre (timer) sınıfı tanımlayalım.</p>
 
 </div>
 </div>

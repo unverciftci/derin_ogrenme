@@ -148,7 +148,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Lineer-Model">Lineer Model </a></li>
 <li class="toc-entry toc-h3"><a href="#Kayıp-Fonksiyonu-(Loss-Function)">Kayıp Fonksiyonu (Loss Function) </a></li>
 <li class="toc-entry toc-h3"><a href="#Analitik-Çözüm">Analitik Çözüm </a></li>
-<li class="toc-entry toc-h3"><a href="#Gradient-Azalım-(Gradient-descent)">Gradient Azalım (Gradient descent) </a></li>
+<li class="toc-entry toc-h3"><a href="#Gradiyent-Azalım-(Gradient-descent)">Gradiyent Azalım (Gradient descent) </a></li>
 <li class="toc-entry toc-h3"><a href="#Öğrenilen-Model-ile-Tahminler-Yapma-(Estimation)">Öğrenilen Model ile Tahminler Yapma (Estimation) </a></li>
 <li class="toc-entry toc-h3"><a href="#Vektörleştirme-Hızlandırır">Vektörleştirme Hızlandırır </a></li>
 </ul>
@@ -248,8 +248,8 @@ $$\mathbf{w}^*, b^* = \operatorname*{argmin}_{\mathbf{w}, b}\  L(\mathbf{w}, b)$
 $$\mathbf{w}^* = (\mathbf X^\top \mathbf X)^{-1}\mathbf X^\top \mathbf{y}$$
 </p>
 <p>analitik çözümünü elde ederiz. Analitik çözüm matematiksel analiz için yararlı olsa da matrisin tersini içerdiğinden pratikte kullanışsızdır. Derin öğrenmede bu şekilde analitik çözümler neredeyse hiç kullanılmaz.</p>
-<h3 id="Gradient-Azalım-(Gradient-descent)">
-<a class="anchor" href="#Gradient-Azal%C4%B1m-(Gradient-descent)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradient Azalım (Gradient descent)<a class="anchor-link" href="#Gradient-Azal%C4%B1m-(Gradient-descent)"> </a>
+<h3 id="Gradiyent-Azalım-(Gradient-descent)">
+<a class="anchor" href="#Gradiyent-Azal%C4%B1m-(Gradient-descent)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradiyent Azalım (Gradient descent)<a class="anchor-link" href="#Gradiyent-Azal%C4%B1m-(Gradient-descent)"> </a>
 </h3>
 <p>Modelimizi analitik olarak çözemediğimiz durumlarda ve kayıp yüzeyimiz yüksek boyutlu ve konveks olmasa bile pratikte modelimizi etkin bir biçimde eğitebiliriz. Hatta birçok iş için optimize edilmesi güç görünen bu modeller daha kolay eğitilebilirler ve daha kullanılışlı olurlar.</p>
 <p>Neredeyse tüm Derin Öğrenme modellerinde optimizasyon için kullanılan kilit yöntem, hatayı azaltmak için parametrelerin kayıp fonksiyonunun azaldığı yönde güncellendiği itreratif yöntemdir. Bu algoritmaya <em>gradiyent azalım</em> denir. Konveks yüzeyler için global minimuma eninde sonunda ulaşılır fakat konveks olmayanlar için (genellikle yeterince iyi olan) bir yerel minimuma yönelir.</p>
@@ -1550,7 +1550,7 @@ $$-\log p(\mathbf y|\mathbf X) = \sum_{i=1}^n \frac{1}{2} \log(2 \pi \sigma^2) +
 <li>Optimizasyon problemini matris ve vektör gösterimi ile ifade edin. </li>
 <li>Kayıp fonksiyonunun $w$ cinsinden gradiyentini bulun. </li>
 <li>Gradiyenti sıfıra eşitleyip çözümü yanlız bırakın.</li>
-<li>Stokastik gradient azalım ile analitik çözümün birbirine göre avantajlarını açıklayın.</li>
+<li>Stokastik gradiyent azalım ile analitik çözümün birbirine göre avantajlarını açıklayın.</li>
 </ul>
 </li>
 <li>Eklediğimiz $\epsilon$ gürültü (hata) teriminin üstel dağılımla modellenmiş olsun. Yani $p(\epsilon) = \frac{1}{2} \exp(-|\epsilon|)$ dağılımı. <ul>

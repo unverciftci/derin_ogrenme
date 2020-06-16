@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Lineer Regresyon (✗) | Derin Öğrenme Kitabı</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Lineer Regresyon (✗)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="En basit regresyon modeli." />
+<meta property="og:description" content="En basit regresyon modeli." />
+<link rel="canonical" href="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html" />
+<meta property="og:url" content="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html" />
+<meta property="og:site_name" content="Derin Öğrenme Kitabı" />
+<meta property="og:image" content="https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-25T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"En basit regresyon modeli.","mainEntityOfPage":{"@type":"WebPage","@id":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html"},"@type":"BlogPosting","url":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html","headline":"Lineer Regresyon (✗)","dateModified":"2020-02-25T00:00:00-06:00","datePublished":"2020-02-25T00:00:00-06:00","image":"https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/derin_ogrenme/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://unverciftci.github.io/derin_ogrenme/feed.xml" title="Derin Öğrenme Kitabı" /><link rel="shortcut icon" type="image/x-icon" href="/derin_ogrenme/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Lineer Regresyon (✗) | Derin Öğrenme Kitabı</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Lineer Regresyon (✗)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="En basit regresyon modeli." />
+<meta property="og:description" content="En basit regresyon modeli." />
+<link rel="canonical" href="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html" />
+<meta property="og:url" content="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html" />
+<meta property="og:site_name" content="Derin Öğrenme Kitabı" />
+<meta property="og:image" content="https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-25T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"En basit regresyon modeli.","mainEntityOfPage":{"@type":"WebPage","@id":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html"},"@type":"BlogPosting","url":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html","headline":"Lineer Regresyon (✗)","dateModified":"2020-02-25T00:00:00-06:00","datePublished":"2020-02-25T00:00:00-06:00","image":"https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://unverciftci.github.io/derin_ogrenme/feed.xml" title="Derin Öğrenme Kitabı" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/derin_ogrenme/">Derin Öğrenme Kitabı</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/derin_ogrenme/bilgi/">Bilgi</a><a class="page-link" href="/derin_ogrenme/arama/">Arama</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Lineer Regresyon (✗)</h1><p class="page-description">En basit regresyon modeli.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-02-25T00:00:00-06:00" itemprop="datePublished">
+        Feb 25, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      15 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/unverciftci/derin_ogrenme/tree/master/_notebooks/2020-02-25-Linear-Regresyon.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/unverciftci/derin_ogrenme/master?filepath=_notebooks%2F2020-02-25-Linear-Regresyon.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/unverciftci/derin_ogrenme/blob/master/_notebooks/2020-02-25-Linear-Regresyon.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Linear-Regression">Linear Regression </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Lineer-Regresyonun-Temel-Ögeleri">Lineer Regresyonun Temel Ögeleri </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Lineer-Model">Lineer Model </a></li>
+<li class="toc-entry toc-h3"><a href="#Kayıp-Fonksiyonu-(Loss-Function)">Kayıp Fonksiyonu (Loss Function) </a></li>
+<li class="toc-entry toc-h3"><a href="#Analitik-Çözüm">Analitik Çözüm </a></li>
+<li class="toc-entry toc-h3"><a href="#Gradient-Azalım-(Gradient-descent)">Gradient Azalım (Gradient descent) </a></li>
+<li class="toc-entry toc-h3"><a href="#Öğrenilen-Model-ile-Tahminler-Yapma-(Estimation)">Öğrenilen Model ile Tahminler Yapma (Estimation) </a></li>
+<li class="toc-entry toc-h3"><a href="#Vektörleştirme-Hızlandırır">Vektörleştirme Hızlandırır </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Normal-Dağılım-ve-En-Küçük-Kareler-Kayıp-Fonksiyonu">Normal Dağılım ve En Küçük Kareler Kayıp Fonksiyonu </a></li>
+<li class="toc-entry toc-h2"><a href="#Lİneer-Regresyondan-Derin-Ağlara-(Deep-Networks)">Lİneer Regresyondan Derin Ağlara (Deep Networks) </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Yapay-Sinir-Ağı-Diyagramı">Yapay Sinir Ağı Diyagramı </a></li>
+<li class="toc-entry toc-h3"><a href="#Biyoloji">Biyoloji </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Özet">Özet </a></li>
+<li class="toc-entry toc-h2"><a href="#Alıştırmalar">Alıştırmalar </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-02-25-Linear-Regresyon.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Linear-Regression">
+<a class="anchor" href="#Linear-Regression" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linear Regression<a class="anchor-link" href="#Linear-Regression"> </a>
+</h1>
+<p><em>Regresyon</em>, bir veya daha fazla bağımsız değişkenle bir bağımlı değişkenin ilişkisini modelleyen metodlara verilen genel isimdir. Doğa bilimlerinde ve sosyal bilimlerde regresyonun amacı genellikle girdiler ve çıktılar arasındaki bağı karakterize etmektir. Buna karşın Makine Öğrenmesi ise çoğunlukla <em>tahmin</em> ile ilgilidir.</p>
+<p>Ne zaman sayısal bir değeri tahmin etmek istesek regresyon karşımıza çıkar. Yaygın örnekler arasında fiyat tahmini (ev, hisse senedi gibi), bir yerde kalma süresinin tahmini (hastanede kalma süresi gibi), arz tahmini (emlak satışları için) vardır. Her tahmin problemi regresyon problemi değildir. İleriki bölümlerde sınıflandırma problemlerini inceleyeceğiz. Sınıflandırmada amaç kategoriler arasından doğru olanı tahmin etmedir, dolayısıyla regresyon problemi değildir.</p>
+<h2 id="Lineer-Regresyonun-Temel-Ögeleri">
+<a class="anchor" href="#Lineer-Regresyonun-Temel-%C3%96geleri" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lineer Regresyonun Temel Ögeleri<a class="anchor-link" href="#Lineer-Regresyonun-Temel-%C3%96geleri"> </a>
+</h2>
+<p><em>Lineer regresyon</em>, standart regresyon araçları arasında hem en popüler hem de en basit olanıdır. Geçmişi 19. Yüzyıla dayanan lineer regresyon basit bir kabülden yola çıkar. Öncelikle $\mathbf{x}$ bağımsız değişkenleri ile $y$ bağımlı değişkeninin lineer olarak bağlantılı olduğunu kabul ederiz. Yani $y$ değişkeni $\mathbf{x}$ vektörünün bileşenlerinin lineer birleşimi ile gözlem hatasınının toplamıdır. İkincisi gözlem hatası düzenlidir, özel olarak Gauss dağılımına sahiptir.</p>
+<p>Amacımızı daha iyi ifade etmek için bir örnek kullanalım. Ev fiyatlarını alanına ve yaşına göre tahmin etmek istiyoruz. Bu kestirimi yapabilmek amacıyla uygulayacağımız model için fiyatını, alanını ve yaşını bildiğimiz satış verisine (data set) ihtiyacımız var. Makine Öğrenmesi terminolojisinde veriye <em>eğitim seti</em> (training set) ve bu kümenin elemanlarına (bu örnekte her bir satış oluyor) bir <em>örnek</em> ya da <em>veri noktası</em> denir. Bu örnekteki fiyat gibi tahmin etmeye çalıştığımız şeye <em>etiket</em> (label) ya da <em>hedef</em> (target) denir. Örneğimizdeki evin alanı ve yaşı gibi bağımsız değişkenlere <em>özellikler</em> (features) denir.</p>
+<p>Veri kümemizdeki örneklerin sayısını $n$ ile gösteriyoruz. Veri örneklerini indekslemek için $i$ harfini kullanacağız. Dolayısyla $y^{(i)}$ etiketine karşılık gelen özellikler $\mathbf{x}^{(i)} = [x_1^{(i)}, x_2^{(i)}]^\top$ ile gösterilecektir.</p>
+<h3 id="Lineer-Model">
+<a class="anchor" href="#Lineer-Model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lineer Model<a class="anchor-link" href="#Lineer-Model"> </a>
+</h3>
+<p>Lineerlik kabulü gereği hedef (fiyat), özelliklerin (alan ve yıl) lineer birleşimidir:</p>
+<p>
+$$fiyat = w_{\textrm{alan}} \cdot \textrm{alan} + w_\textrm{yıl} \cdot \textrm{yıl} + b.$$
+</p>
+<p>Burada , $w_{\textrm{alan}}$ and $w_{\textrm{yıl}}$ katsayılarına <em>ağırlıklar</em>, $b$ sayısına called a <em>yanlılık</em> denir. Ağırlıklar herbir özelliğin (feature) tahminimiz üzerinde ne kadar etkili olduğunu, yanlılık terimi de teüm üzellikler sıfır olduğunda tahmin edilen fiyatın kaç olduğunu belirler. Evin alanı veya yaşı sıfır olmaz ama yanılık terimi modelimizin temsil yeterliliğinin kısıtlanmaması açısından önemlidir.</p>
+<p>Amacımız, elimizdeki veri için $\mathbf{w}$ ağırlılarını $b$ yanlılığını uygun şekilde belirlemektir. Bu sayede modelimizin yaptığı tahminler ile veri kümesindeki gerçek değerler ortalama olarak örtüşmelidir.</p>
+<p>Makine öğrenmesinde yüksek boyutlu veri kümeleri ile çalığılır, yani özelliklerin sayısı çok fazladır. Örneğin bir fotoğrafın her bir pikseli bir özellik olarak alınır. Dolayısıyla matrisler ve vektörler gibi Lineer Cebir araçlarını kullanmak yararlı olur. Herbir veri (girdi), $d$ özelliğe sahip ise $\hat{y}$ tahminimizi</p>
+<p>
+$$\hat{y} = w_1  x_1 + ... + w_d  x_d + b.$$
+</p>
+<p>şeklinde ifade ederiz. Tüm özellikleri $\mathbf{x} \in \mathbb{R}^d$ vektörünün bileşenleri ile, tüm ağırlıkları da $\mathbf{w} \in \mathbb{R}^d$ vektörünün bileşnleri ile gösterirsek, modelimizi</p>
+<p>
+$$\hat{y} = \mathbf{w}^\top \mathbf{x} + b$$
+</p>
+<p>nokta çarpımıyla ifade etmiş oluruz.</p>
+<p>Burada $\mathbf{x}$ vektörü bir tek veri örneğine karşılık gelen özellik vektörüdür. Veri kümesi $n$ örnekten oluşsun ve hepsini $\mathbf{X} \in \mathbb{R}^{n \times d}$ matrisinde bir araya getirelim. Burada herbir $\mathbf{x}$ vektörü $\mathbf{X}$ matrisinin bir sütununu oluşturmaktadır. $\mathbf{X}$ matrisine <em>dizayn matrisi</em> veya <em>veri matrisi</em> denir.</p>
+<p>Özelliklerin bir araya getirilmesi ile oluşan $\mathbf{X}$ için  $\hat{\mathbf{y}} \in \mathbb{R}^n$ tahminimiz matris-vektör çarımıyla</p>
+<p>
+$${\hat{\mathbf{y}}} = \mathbf{X} \mathbf{w} + b,$$
+</p>
+<p>biçiminde ifade edilebilir. Burada $b$ vektörü aslında aynı $b$ sayısının $n$ defa yazılmasıyla oluşan vektördür. Python programlamadaki yayımlama (broadcasting) gibi. Lineer regresyonda amaç, $\mathbf{X}$ eğitim kümemizdeki özellikler ve karşılık gelen $\mathbf{y}$ etiketleri için, aynı dağılımdan gelen yeni bir örnek için tahmindeki hatayı beklenen değer olarak en az yapan $\mathbf{w}$  ve $b$ terimlerini bulmaktır.</p>
+<p>$\mathbf{x}$ verildiğinde $y$ için en iyi tahmini veren modelin lineer olduğunu düşünsek de, her $1 \leq i \leq n$ için gerçek $y^{(i)}$ ile $\mathbf{w}^\top \mathbf{x}^{(i)}+b$ tahmininin eşit olmasını bekleyemeyiz. Örneğin $\mathbf{X}$ özellikleri ve $\mathbf{y}$ etiketleri küçük ölçüm hataları yaılmış olabilir. Dolayısıyla, geri landa yatan ilişkinin lineer olduğundan emin olsak bile bu tür küçük hataları ifade eden bir gürültü (noise) terimini de dahil edeceğiz.</p>
+<p>En iyi $\mathbf{w}$ and $b$ parametrelerini aramaya başlamadan önce iki şey yapmalıyız: (i) modelin kalitesini ölçen bir araç ve (ii) modelin kalitesini iyileştirmek için izlenecek yol.</p>
+<h3 id="Kayıp-Fonksiyonu-(Loss-Function)">
+<a class="anchor" href="#Kay%C4%B1p-Fonksiyonu-(Loss-Function)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kayıp Fonksiyonu (Loss Function)<a class="anchor-link" href="#Kay%C4%B1p-Fonksiyonu-(Loss-Function)"> </a>
+</h3>
+<p>Modelimizi veriye uydurmaya başlamadan önce <em>uyum</em> (fitness) için bir ölçeğe ihtiyacımız var. <em>Kayıp fonksiyonu</em> sayesinde <em>gerçek</em> ve <em>tahmini</em> değer arasındaki mesafeyi ölçeriz. Kayıp genellikle negatif olmayan bir sayıdır ve küçük olması istenir hatta mükemmel sonuç için sıfırdır. Regresyon problemlerinde en çok kullanılan kayıp fonksiyonu hataların karelerinin toplamıdır. Buna <em>en küçük kareler hata fonksiyonu</em> da denir. Eğer $i$ numaralı örneğimiz için tahminimiz $\hat{y}^{(i)}$ ve karşılık gelen doğru etiket $y^{(i)}$ ise, hatanın karesi</p>
+<p>
+$$l^{(i)}(\mathbf{w}, b) = \frac{1}{2} \left(\hat{y}^{(i)} - y^{(i)}\right)^2$$
+</p>
+<p>olur.</p>
+<p>Burada $1/2$ katsayısı sonucu değiştirmez ama türev alındığında sadeleşeceği için işlem kolaylığı sağlar. Eğitim kümemiz hazır olarak verildiğinden bizim kontrolümüz dışındadır, dolayısıyla yukarıdaki deneysel hata (emprical losss) sadece model parametrelerinin fonksiyonudur. Anlatılanları somutlaştırmak adına bir boyutlu durum için regresyon problemini aşağıdaki grafikte gösterelim.</p>
+<p><img src="https://d2l.ai/_images/fit_linreg.svg" alt="Fit data with a linear model."></p>
+<p>Burada hataların kareleri alındığından büyük hatların kayıp fonksiyonunu çok fazla büyüteceğine dikkat edin. Tüm veri kümesi üzerinden modelin kalitesini ölçmek için hataların ortalamasını (ya da sadece toplamını) alırız:</p>
+<p>
+$$L(\mathbf{w}, b) =\frac{1}{n}\sum_{i=1}^n l^{(i)}(\mathbf{w}, b) =\frac{1}{n} \sum_{i=1}^n \frac{1}{2}\left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)^2.$$
+</p>
+<p>Modeli eğitirken, parametrelerin ($\mathbf{w}^*, b^*$) toplam kayıbı en küçük yapmasını yani</p>
+<p>
+$$\mathbf{w}^*, b^* = \operatorname*{argmin}_{\mathbf{w}, b}\  L(\mathbf{w}, b)$$
+</p>
+<p>istiyoruz.</p>
+<h3 id="Analitik-Çözüm">
+<a class="anchor" href="#Analitik-%C3%87%C3%B6z%C3%BCm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Analitik Çözüm<a class="anchor-link" href="#Analitik-%C3%87%C3%B6z%C3%BCm"> </a>
+</h3>
+<p>Lineer Regreyon az rastlanır ölçüde basit bir optimizasyon problemdir. Karşılaşacağımız birçok modelin aksine lineer regresyon analitik bir şekilde çözülür ve global optimum bulunur. İlk olarak $b$ yanlılık terimini $\mathbf{w}$ arametrelerine eklyelelim buna karşılık dizayn matrisine $1$ sayılarından oluşan bir sütun ekleyelim. Bu durumda tahmin problemimiz $||\mathbf{y} - \mathbf{X}\mathbf{w}||^2$ ifadesini minimize etmeye dönüşür. Bu ikinci dereceden bir ifade olduğu için konvekstir.</p>
+<p>Dolayısıyla kayıp fonksiyonunun belirttiği yüzey üzerinde bir tek kritik nokta vardır, bu da global minimuma karşılık gelir. Kayıp fonksiyonunun $\mathbf{w}$ üzerinden türevini alıp sıfıra eşitlersek,</p>
+<p>
+$$\mathbf{w}^* = (\mathbf X^\top \mathbf X)^{-1}\mathbf X^\top \mathbf{y}$$
+</p>
+<p>analitik çözümünü elde ederiz. Analitik çözüm matematiksel analiz için yararlı olsa da matrisin tersin içerdiğinden pratikte kullanışsızdır. Derin öğrenmede bu şekilde analitik çözümler neredeyse hiç kullanılmaz.</p>
+<h3 id="Gradient-Azalım-(Gradient-descent)">
+<a class="anchor" href="#Gradient-Azal%C4%B1m-(Gradient-descent)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradient Azalım (Gradient descent)<a class="anchor-link" href="#Gradient-Azal%C4%B1m-(Gradient-descent)"> </a>
+</h3>
+<p>Modelimizi analitik olarak çözemezek veya kayıp yüzeyimiz yüksek boyutlu ve konveks olmasa bile pratikte modelimizi etkin bir biçimde eğitebiliriz. Hatta birçok iş için bu optimize edilmesi güç görünen modeller daha kolay eğitilebilirler ve daha kullanılışlı olurlar.</p>
+<p>Neredeyse tüm Derin Öğrenme modellerinde optimizasyon için kullanılan kilit yöntem, hatayı azaltmak için parametrelerin kayıp fonksiyonunun azaldığı yönde güncellendiği itreratif yöntemdir. Bu algoritmaya <em>gradiyent azalım</em> denir. Konveks yüzeyler için global minimuma eninde sonunda ulaşılır fakat konveks olmayanlar için (genellikle yeterince iyi olan) bir yerel minimuma yönelir.</p>
+<p>Gradiyent azalımı kullanırken kayıp fonksiyonunun verinin tamamı üzerinden türevini almak kaba bir yaklaşım olur çünkü bu veri kümesindeki her bir örnek için elde edilen kayıp değerlerinin ortlamasıdır. Her güncelleme adımında veri kümesinin tamamını tarayacağımızdan hesap çok uzun sürer. Genellikle her güncellemede verinin tamamı yerine örneklerden rastgele bir <em>yığın</em> (batch) alınır. Buna <em>stokastik gradiyent azalım</em> denir.</p>
+<p>Her ötelemede (iteration) belli sayıda örnekten oluşan rastgele küçük bir $\mathcal{B}$ yığını seçilir. Daha sonra yığının ortalama kayıbının model parametrelerine göre türevi (gradiyenti) hesaplanır. Son olarak da gradiyent belli bir $\eta &gt; 0$ adım boyu ile çarpılıp güncel parametre değerinden çıkarılır.</p>
+<p>Güncellemeyi matematiksel olarak şöyle ifade edebiliriz:</p>
+<p>
+$$(\mathbf{w},b) \leftarrow (\mathbf{w},b) - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{(\mathbf{w},b)} l^{(i)}(\mathbf{w},b).$$
+</p>
+<p>Burada $\partial$ ile kısmi türev gösterilmektedir. Algoritmanın adımları: (i) parametreler için başlangıç değerleri seçmek, genellikle rastgele seçilir (ii) veriden her bir adım için rastgele yığınlar seçmek ve parametrleri negatif gradiyent doğrultusunda güncellemek olarak özetlenebilir.</p>
+<p>İkinci dereceden kayıplar ve lineer fonksiyonlar için güncellemeyi açık olarak bulabiliriz. Burada $\mathbf{w}$ ve $\mathbf{x}$ vektörlerdir. $w_1, w_2, \ldots, w_d$ bileşenlerini kullanmak yerine vektör gösterimi matematiksel ifadeleri daha okunaklı yapar. Sonuç olarak güncelleme</p>
+$$
+\begin{aligned}
+\mathbf{w} &amp;\leftarrow \mathbf{w} -   \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_{\mathbf{w}} l^{(i)}(\mathbf{w}, b) &amp;&amp; =
+\mathbf{w} - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \mathbf{x}^{(i)} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right),\\
+b &amp;\leftarrow b -  \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \partial_b l^{(i)}(\mathbf{w}, b)  &amp;&amp; =
+b - \frac{\eta}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \left(\mathbf{w}^\top \mathbf{x}^{(i)} + b - y^{(i)}\right)
+\end{aligned}
+$$<p>biçiminde ifade edilebilir. Yukarıdaki eşitliklerde $|\mathcal{B}|$ ile <em>yığın boyutu</em> (batch size) ve $\eta$ ile de <em>öğrenme parametresi</em> (learining rate) gösterilmektedir. Yığın boyutu ve öğrenme parametresini önceden belirlediğimizi, bunların öğrenilmediğini vurgulamak gerekir. Bu şekilde değiştirilebilen fakat öğrenme sırasında güncellenmeyen parametrelere <em>hiperparametre</em> denir. <em>Hiperparametre ayarlama</em> (hyerparameter tuning), bunların uygun biçimde seçilmesi işlemidir ve eğitim kümesi ile elde edilen sonuçların ayrı bir <em>doğrulama kümesi</em> (validation set) ile denenmesi sayesinde yapılabilir.</p>
+<p>Belli sayıda güncellemeden sonra ya da belli şartlar sağlandığında eğitme (training) durdurulur. Sonra bulduğumuz parametreler kaydedilir. Bu parametreler gerçek parametrelerin tamin edilen değerleridir ve $\hat{\mathbf{w}}, \hat{b}$ ile gösterilirler. Fonksiyonumuz tam olarak lineer olsa ve hiçbir ölçüm hatası olmasa bile elde ettiğimiz bu parametreler tam olarak doğru değildir çünkü algoritmamız sonlu sayıda adımda minimuma ulaşamaz.</p>
+<p>Lineer regresyon, konveks öğrenme problemi olduğundan bir tek (global) minimumu vardır. Daha kamaşık derin ağlarda kayıp yüzeyi üzerinde birçok minimum vardır. Neyse ki derin öğrenmede uygulayıcılar eğitim kümesi üzerinde minimumu bulmada fazla zorlanmazlar ve bunun matematiksel temeli halen çok iyi bilinmemektedir. Daha zor olanı, daha önce kullanmadığımız örnekler üzerinde düşük kayıp değeri veren parametreler bulmaktır. Buna probleme <em>genelleştirme</em> denir. İleride bu konulara değineceğiz.</p>
+<h3 id="Öğrenilen-Model-ile-Tahminler-Yapma-(Estimation)">
+<a class="anchor" href="#%C3%96%C4%9Frenilen-Model-ile-Tahminler-Yapma-(Estimation)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Öğrenilen Model ile Tahminler Yapma (Estimation)<a class="anchor-link" href="#%C3%96%C4%9Frenilen-Model-ile-Tahminler-Yapma-(Estimation)"> </a>
+</h3>
+<p>Öğrenimliş bir $\hat{\mathbf{w}}^\top \mathbf{x} + \hat{b}$ lineer regresyon modeli ile eğriyim kümemizde yer almayan örnekler için tahminde bulunabiliriz. Örneğin alanı $x_1$ ve yılı $x_2$ olan bir evin fiyatını tahmin edebiliriz. Özellikleri verilen hedefi tahmin etme işine <em>kestirim</em> (prediction) veya <em>çıkarım</em> (inference) denir.</p>
+<p>İstatistikte genellikle çıkarım ile parametrelerin veri kullanılarak tahmini ifade edilir. Dolayısıyla karışıklığa yol açmaması için derin öğrenme için kestirim kullanılacaktır.</p>
+<h3 id="Vektörleştirme-Hızlandırır">
+<a class="anchor" href="#Vekt%C3%B6rle%C5%9Ftirme-H%C4%B1zland%C4%B1r%C4%B1r" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vektörleştirme Hızlandırır<a class="anchor-link" href="#Vekt%C3%B6rle%C5%9Ftirme-H%C4%B1zland%C4%B1r%C4%B1r"> </a>
+</h3>
+<p>Modeli eğitirken tüm küçük veri yığınlarını aynı anda işlemek isteriz. Bunu etkin bir şekilde yamanın yolu, işlemleri vektörleştirmek ve hızlı döngüler (<em>for loop</em> gibi) hızlı lineer cebir kütüphanelerini kullanmaktır.</p>
+<p>Vektörleştirmeye ihtiyacın daha iyi anlaşılması için vektörlerin toplamı için iki metod kullanalım. Önce $1$ rakamlarından oluşan $10000$ boyutlu vektörler alalım. İlk metod için Python'da vektörün bileşenleri üzerinden <code>for</code> döngüsü oluşturacağız. İkincisinde ise sadece bir kez <code>+</code> işlemcisini kullanacağız.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install -U mxnet-cu101mkl<span class="o">==</span><span class="m">1</span>.6.0  # updating mxnet to at least v1.6
+<span class="o">!</span>pip install <span class="nv">d2l</span><span class="o">==</span><span class="m">0</span>.13.2 -f https://d2l.ai/whl.html # installing d2l
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">d2l</span> <span class="kn">import</span> <span class="n">mxnet</span> <span class="k">as</span> <span class="n">d2l</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">mxnet</span> <span class="kn">import</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Zaman açısından kıyasamayı ileride de sık sık yapacağımızdan, bunun için <code>d2l</code> paketinde erişilmek üzere bir kronometre (timer) sınıfı tanımlayalım.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Timer</span><span class="p">:</span>  <span class="c1">#@save</span>
+    <span class="sd">"""Record multiple running times."""</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Start the timer."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tik</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Stop the timer and record the time in a list."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">tik</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">avg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Return the average time."""</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Return the sum of time."""</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">cumsum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""Return the accumulated times."""</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Şimdi işleri karşılaştırabiliriz. Önce <code>for</code> döngüsüyle bileşen bileşen toplama yapalım.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1"> sec'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'4.18153 sec'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Şimdi de <code>mxnet.np</code> (yukarıda çağırdık) yeniden tanımlanan <code>+</code> işlemcisini kullanalım.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">timer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1"> sec'</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'0.00025 sec'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>İkincisinin farklı şekilde hızlı olduğu görülüyor. Kodu vektörleştirmek genellikle hızda üstel olarak değişen azalmalar sağlar. Hatta, işlemleri hazır kütüphaneleri kullanarak yaptırdığımızdan hataların da azalmasını sağlamış oluruz.</p>
+<h2 id="Normal-Dağılım-ve-En-Küçük-Kareler-Kayıp-Fonksiyonu">
+<a class="anchor" href="#Normal-Da%C4%9F%C4%B1l%C4%B1m-ve-En-K%C3%BC%C3%A7%C3%BCk-Kareler-Kay%C4%B1p-Fonksiyonu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Normal Dağılım ve En Küçük Kareler Kayıp Fonksiyonu<a class="anchor-link" href="#Normal-Da%C4%9F%C4%B1l%C4%B1m-ve-En-K%C3%BC%C3%A7%C3%BCk-Kareler-Kay%C4%B1p-Fonksiyonu"> </a>
+</h2>
+<p>Şimdiden lineer regresyonu uygulayacak kadar bilgi edinmiş olsak bile, en küçük kareler kayıp fonksiyonunun neden gürültü ile ilgili kabulümüz ile uyumlu olduğunu bilmek yayarlı olacaktır.</p>
+<p>Yukarıda $l(y, \hat{y}) = \frac{1}{2} (y - \hat{y})^2$ olarak tanılmalan en küçük kareler kayıp fonksiyonunun yararlı özellikleri görüldü. Bunlardan birisi de türevinin $\partial_{\hat{y}} l(y, \hat{y}) = (\hat{y} - y)$ şeklinde çok sade olmasıdır.</p>
+<p>Lineer regresyonu Gauss 1975 yılında buldu. Gauss aynı zamanda normal dağılımı (Gauss dağılımı da denir) da keşfeden kişidir. Yani normal dağılımla lineer regresyon arasında babalarının aynı olması ötesinde de derin bağlar vardır. Şimdi ortalamsı (mean) $\mu$ and varyansı $\sigma^2$ olan normal dağılımın yoğunluk fonksiyonunun</p>
+<p>
+$$p(z) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2 \sigma^2} (z - \mu)^2\right)$$
+</p>
+<p>olduğunu hatırlayalım. Aşağıda normal dağılımı hesalayan Python fonksiyonu veriliyor.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">normal</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="mf">0.5</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bununla normal dağılımı görselleştirebiliriz.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Using numpy again for visualizations.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># Mean and variance pairs</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">d2l</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">normal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">],</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">'z'</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">'p(z)'</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span>
+         <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">'ort </span><span class="si">%d</span><span class="s1">, var </span><span class="si">%d</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_svg output_subarea ">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="180.65625pt" version="1.1" viewbox="0 0 302.08125 180.65625" width="302.08125pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+*{stroke-linecap:butt;stroke-linejoin:round;}
+  </style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 180.65625 
+L 302.08125 180.65625 
+L 302.08125 0 
+L 0 0 
+z
+" style="fill:none;"></path>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 43.78125 143.1 
+L 294.88125 143.1 
+L 294.88125 7.2 
+L 43.78125 7.2 
+z
+" style="fill:#ffffff;"></path>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path clip-path="url(#p577ab8d339)" d="M 71.511736 143.1 
+L 71.511736 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path d="M 0 0 
+L 0 3.5 
+" id="m014f73f44f" style="stroke:#000000;stroke-width:0.8;"></path>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="71.511736" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- −6 -->
+      <defs>
+       <path d="M 10.59375 35.5 
+L 73.1875 35.5 
+L 73.1875 27.203125 
+L 10.59375 27.203125 
+z
+" id="DejaVuSans-8722"></path>
+       <path d="M 33.015625 40.375 
+Q 26.375 40.375 22.484375 35.828125 
+Q 18.609375 31.296875 18.609375 23.390625 
+Q 18.609375 15.53125 22.484375 10.953125 
+Q 26.375 6.390625 33.015625 6.390625 
+Q 39.65625 6.390625 43.53125 10.953125 
+Q 47.40625 15.53125 47.40625 23.390625 
+Q 47.40625 31.296875 43.53125 35.828125 
+Q 39.65625 40.375 33.015625 40.375 
+z
+M 52.59375 71.296875 
+L 52.59375 62.3125 
+Q 48.875 64.0625 45.09375 64.984375 
+Q 41.3125 65.921875 37.59375 65.921875 
+Q 27.828125 65.921875 22.671875 59.328125 
+Q 17.53125 52.734375 16.796875 39.40625 
+Q 19.671875 43.65625 24.015625 45.921875 
+Q 28.375 48.1875 33.59375 48.1875 
+Q 44.578125 48.1875 50.953125 41.515625 
+Q 57.328125 34.859375 57.328125 23.390625 
+Q 57.328125 12.15625 50.6875 5.359375 
+Q 44.046875 -1.421875 33.015625 -1.421875 
+Q 20.359375 -1.421875 13.671875 8.265625 
+Q 6.984375 17.96875 6.984375 36.375 
+Q 6.984375 53.65625 15.1875 63.9375 
+Q 23.390625 74.21875 37.203125 74.21875 
+Q 40.921875 74.21875 44.703125 73.484375 
+Q 48.484375 72.75 52.59375 71.296875 
+z
+" id="DejaVuSans-54"></path>
+      </defs>
+      <g transform="translate(64.140643 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"></use>
+       <use x="83.789062" xlink:href="#DejaVuSans-54"></use>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path clip-path="url(#p577ab8d339)" d="M 104.145436 143.1 
+L 104.145436 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="104.145436" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- −4 -->
+      <defs>
+       <path d="M 37.796875 64.3125 
+L 12.890625 25.390625 
+L 37.796875 25.390625 
+z
+M 35.203125 72.90625 
+L 47.609375 72.90625 
+L 47.609375 25.390625 
+L 58.015625 25.390625 
+L 58.015625 17.1875 
+L 47.609375 17.1875 
+L 47.609375 0 
+L 37.796875 0 
+L 37.796875 17.1875 
+L 4.890625 17.1875 
+L 4.890625 26.703125 
+z
+" id="DejaVuSans-52"></path>
+      </defs>
+      <g transform="translate(96.774343 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"></use>
+       <use x="83.789062" xlink:href="#DejaVuSans-52"></use>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path clip-path="url(#p577ab8d339)" d="M 136.779136 143.1 
+L 136.779136 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="136.779136" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- −2 -->
+      <defs>
+       <path d="M 19.1875 8.296875 
+L 53.609375 8.296875 
+L 53.609375 0 
+L 7.328125 0 
+L 7.328125 8.296875 
+Q 12.9375 14.109375 22.625 23.890625 
+Q 32.328125 33.6875 34.8125 36.53125 
+Q 39.546875 41.84375 41.421875 45.53125 
+Q 43.3125 49.21875 43.3125 52.78125 
+Q 43.3125 58.59375 39.234375 62.25 
+Q 35.15625 65.921875 28.609375 65.921875 
+Q 23.96875 65.921875 18.8125 64.3125 
+Q 13.671875 62.703125 7.8125 59.421875 
+L 7.8125 69.390625 
+Q 13.765625 71.78125 18.9375 73 
+Q 24.125 74.21875 28.421875 74.21875 
+Q 39.75 74.21875 46.484375 68.546875 
+Q 53.21875 62.890625 53.21875 53.421875 
+Q 53.21875 48.921875 51.53125 44.890625 
+Q 49.859375 40.875 45.40625 35.40625 
+Q 44.1875 33.984375 37.640625 27.21875 
+Q 31.109375 20.453125 19.1875 8.296875 
+z
+" id="DejaVuSans-50"></path>
+      </defs>
+      <g transform="translate(129.408042 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"></use>
+       <use x="83.789062" xlink:href="#DejaVuSans-50"></use>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path clip-path="url(#p577ab8d339)" d="M 169.412836 143.1 
+L 169.412836 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="169.412836" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- 0 -->
+      <defs>
+       <path d="M 31.78125 66.40625 
+Q 24.171875 66.40625 20.328125 58.90625 
+Q 16.5 51.421875 16.5 36.375 
+Q 16.5 21.390625 20.328125 13.890625 
+Q 24.171875 6.390625 31.78125 6.390625 
+Q 39.453125 6.390625 43.28125 13.890625 
+Q 47.125 21.390625 47.125 36.375 
+Q 47.125 51.421875 43.28125 58.90625 
+Q 39.453125 66.40625 31.78125 66.40625 
+z
+M 31.78125 74.21875 
+Q 44.046875 74.21875 50.515625 64.515625 
+Q 56.984375 54.828125 56.984375 36.375 
+Q 56.984375 17.96875 50.515625 8.265625 
+Q 44.046875 -1.421875 31.78125 -1.421875 
+Q 19.53125 -1.421875 13.0625 8.265625 
+Q 6.59375 17.96875 6.59375 36.375 
+Q 6.59375 54.828125 13.0625 64.515625 
+Q 19.53125 74.21875 31.78125 74.21875 
+z
+" id="DejaVuSans-48"></path>
+      </defs>
+      <g transform="translate(166.231586 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"></use>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path clip-path="url(#p577ab8d339)" d="M 202.046536 143.1 
+L 202.046536 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="202.046536" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 2 -->
+      <g transform="translate(198.865286 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-50"></use>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path clip-path="url(#p577ab8d339)" d="M 234.680236 143.1 
+L 234.680236 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="234.680236" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- 4 -->
+      <g transform="translate(231.498986 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-52"></use>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path clip-path="url(#p577ab8d339)" d="M 267.313936 143.1 
+L 267.313936 7.2 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="267.313936" xlink:href="#m014f73f44f" y="143.1"></use>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- 6 -->
+      <g transform="translate(264.132686 157.698438)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-54"></use>
+      </g>
+     </g>
+    </g>
+    <g id="text_8">
+     <!-- z -->
+     <defs>
+      <path d="M 5.515625 54.6875 
+L 48.1875 54.6875 
+L 48.1875 46.484375 
+L 14.40625 7.171875 
+L 48.1875 7.171875 
+L 48.1875 0 
+L 4.296875 0 
+L 4.296875 8.203125 
+L 38.09375 47.515625 
+L 5.515625 47.515625 
+z
+" id="DejaVuSans-122"></path>
+     </defs>
+     <g transform="translate(166.707031 171.376563)scale(0.1 -0.1)">
+      <use xlink:href="#DejaVuSans-122"></use>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_15">
+      <path clip-path="url(#p577ab8d339)" d="M 43.78125 136.922727 
+L 294.88125 136.922727 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_16">
+      <defs>
+       <path d="M 0 0 
+L -3.5 0 
+" id="mc493c6866f" style="stroke:#000000;stroke-width:0.8;"></path>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="43.78125" xlink:href="#mc493c6866f" y="136.922727"></use>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- 0.0 -->
+      <defs>
+       <path d="M 10.6875 12.40625 
+L 21 12.40625 
+L 21 0 
+L 10.6875 0 
+z
+" id="DejaVuSans-46"></path>
+      </defs>
+      <g transform="translate(20.878125 140.721946)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"></use>
+       <use x="63.623047" xlink:href="#DejaVuSans-46"></use>
+       <use x="95.410156" xlink:href="#DejaVuSans-48"></use>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_17">
+      <path clip-path="url(#p577ab8d339)" d="M 43.78125 105.954475 
+L 294.88125 105.954475 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="43.78125" xlink:href="#mc493c6866f" y="105.954475"></use>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- 0.1 -->
+      <defs>
+       <path d="M 12.40625 8.296875 
+L 28.515625 8.296875 
+L 28.515625 63.921875 
+L 10.984375 60.40625 
+L 10.984375 69.390625 
+L 28.421875 72.90625 
+L 38.28125 72.90625 
+L 38.28125 8.296875 
+L 54.390625 8.296875 
+L 54.390625 0 
+L 12.40625 0 
+z
+" id="DejaVuSans-49"></path>
+      </defs>
+      <g transform="translate(20.878125 109.753694)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"></use>
+       <use x="63.623047" xlink:href="#DejaVuSans-46"></use>
+       <use x="95.410156" xlink:href="#DejaVuSans-49"></use>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_19">
+      <path clip-path="url(#p577ab8d339)" d="M 43.78125 74.986223 
+L 294.88125 74.986223 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="43.78125" xlink:href="#mc493c6866f" y="74.986223"></use>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- 0.2 -->
+      <g transform="translate(20.878125 78.785442)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"></use>
+       <use x="63.623047" xlink:href="#DejaVuSans-46"></use>
+       <use x="95.410156" xlink:href="#DejaVuSans-50"></use>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_21">
+      <path clip-path="url(#p577ab8d339)" d="M 43.78125 44.017971 
+L 294.88125 44.017971 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="43.78125" xlink:href="#mc493c6866f" y="44.017971"></use>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- 0.3 -->
+      <defs>
+       <path d="M 40.578125 39.3125 
+Q 47.65625 37.796875 51.625 33 
+Q 55.609375 28.21875 55.609375 21.1875 
+Q 55.609375 10.40625 48.1875 4.484375 
+Q 40.765625 -1.421875 27.09375 -1.421875 
+Q 22.515625 -1.421875 17.65625 -0.515625 
+Q 12.796875 0.390625 7.625 2.203125 
+L 7.625 11.71875 
+Q 11.71875 9.328125 16.59375 8.109375 
+Q 21.484375 6.890625 26.8125 6.890625 
+Q 36.078125 6.890625 40.9375 10.546875 
+Q 45.796875 14.203125 45.796875 21.1875 
+Q 45.796875 27.640625 41.28125 31.265625 
+Q 36.765625 34.90625 28.71875 34.90625 
+L 20.21875 34.90625 
+L 20.21875 43.015625 
+L 29.109375 43.015625 
+Q 36.375 43.015625 40.234375 45.921875 
+Q 44.09375 48.828125 44.09375 54.296875 
+Q 44.09375 59.90625 40.109375 62.90625 
+Q 36.140625 65.921875 28.71875 65.921875 
+Q 24.65625 65.921875 20.015625 65.03125 
+Q 15.375 64.15625 9.8125 62.3125 
+L 9.8125 71.09375 
+Q 15.4375 72.65625 20.34375 73.4375 
+Q 25.25 74.21875 29.59375 74.21875 
+Q 40.828125 74.21875 47.359375 69.109375 
+Q 53.90625 64.015625 53.90625 55.328125 
+Q 53.90625 49.265625 50.4375 45.09375 
+Q 46.96875 40.921875 40.578125 39.3125 
+z
+" id="DejaVuSans-51"></path>
+      </defs>
+      <g transform="translate(20.878125 47.81719)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"></use>
+       <use x="63.623047" xlink:href="#DejaVuSans-46"></use>
+       <use x="95.410156" xlink:href="#DejaVuSans-51"></use>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_23">
+      <path clip-path="url(#p577ab8d339)" d="M 43.78125 13.049719 
+L 294.88125 13.049719 
+" style="fill:none;stroke:#b0b0b0;stroke-linecap:square;stroke-width:0.8;"></path>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="43.78125" xlink:href="#mc493c6866f" y="13.049719"></use>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- 0.4 -->
+      <g transform="translate(20.878125 16.848938)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-48"></use>
+       <use x="63.623047" xlink:href="#DejaVuSans-46"></use>
+       <use x="95.410156" xlink:href="#DejaVuSans-52"></use>
+      </g>
+     </g>
+    </g>
+    <g id="text_14">
+     <!-- p(z) -->
+     <defs>
+      <path d="M 18.109375 8.203125 
+L 18.109375 -20.796875 
+L 9.078125 -20.796875 
+L 9.078125 54.6875 
+L 18.109375 54.6875 
+L 18.109375 46.390625 
+Q 20.953125 51.265625 25.265625 53.625 
+Q 29.59375 56 35.59375 56 
+Q 45.5625 56 51.78125 48.09375 
+Q 58.015625 40.1875 58.015625 27.296875 
+Q 58.015625 14.40625 51.78125 6.484375 
+Q 45.5625 -1.421875 35.59375 -1.421875 
+Q 29.59375 -1.421875 25.265625 0.953125 
+Q 20.953125 3.328125 18.109375 8.203125 
+z
+M 48.6875 27.296875 
+Q 48.6875 37.203125 44.609375 42.84375 
+Q 40.53125 48.484375 33.40625 48.484375 
+Q 26.265625 48.484375 22.1875 42.84375 
+Q 18.109375 37.203125 18.109375 27.296875 
+Q 18.109375 17.390625 22.1875 11.75 
+Q 26.265625 6.109375 33.40625 6.109375 
+Q 40.53125 6.109375 44.609375 11.75 
+Q 48.6875 17.390625 48.6875 27.296875 
+z
+" id="DejaVuSans-112"></path>
+      <path d="M 31 75.875 
+Q 24.46875 64.65625 21.28125 53.65625 
+Q 18.109375 42.671875 18.109375 31.390625 
+Q 18.109375 20.125 21.3125 9.0625 
+Q 24.515625 -2 31 -13.1875 
+L 23.1875 -13.1875 
+Q 15.875 -1.703125 12.234375 9.375 
+Q 8.59375 20.453125 8.59375 31.390625 
+Q 8.59375 42.28125 12.203125 53.3125 
+Q 15.828125 64.359375 23.1875 75.875 
+z
+" id="DejaVuSans-40"></path>
+      <path d="M 8.015625 75.875 
+L 15.828125 75.875 
+Q 23.140625 64.359375 26.78125 53.3125 
+Q 30.421875 42.28125 30.421875 31.390625 
+Q 30.421875 20.453125 26.78125 9.375 
+Q 23.140625 -1.703125 15.828125 -13.1875 
+L 8.015625 -13.1875 
+Q 14.5 -2 17.703125 9.0625 
+Q 20.90625 20.125 20.90625 31.390625 
+Q 20.90625 42.671875 17.703125 53.65625 
+Q 14.5 64.65625 8.015625 75.875 
+z
+" id="DejaVuSans-41"></path>
+     </defs>
+     <g transform="translate(14.798438 84.85)rotate(-90)scale(0.1 -0.1)">
+      <use xlink:href="#DejaVuSans-112"></use>
+      <use x="63.476562" xlink:href="#DejaVuSans-40"></use>
+      <use x="102.490234" xlink:href="#DejaVuSans-122"></use>
+      <use x="154.980469" xlink:href="#DejaVuSans-41"></use>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_25">
+    <path clip-path="url(#p577ab8d339)" d="M 55.194886 136.922727 
+L 108.224649 136.813535 
+L 113.609208 136.566288 
+L 117.198915 136.184417 
+L 119.972781 135.668952 
+L 122.257142 135.025185 
+L 124.215162 134.257847 
+L 126.01001 133.330371 
+L 127.804866 132.138337 
+L 129.436549 130.77945 
+L 131.06824 129.113083 
+L 132.699924 127.093511 
+L 134.331607 124.674772 
+L 135.963291 121.812697 
+L 137.594974 118.467299 
+L 139.226665 114.605492 
+L 141.021513 109.733828 
+L 142.816369 104.197086 
+L 144.774389 97.412526 
+L 146.895581 89.247641 
+L 149.506275 78.224543 
+L 153.259151 61.239325 
+L 157.501535 42.275262 
+L 159.785892 33.113073 
+L 161.580748 26.820509 
+L 163.049259 22.424539 
+L 164.354614 19.173265 
+L 165.496788 16.88464 
+L 166.475798 15.362588 
+L 167.454808 14.263614 
+L 168.270654 13.679586 
+L 169.086499 13.401979 
+L 169.739173 13.401979 
+L 170.391846 13.599458 
+L 171.207684 14.122462 
+L 172.02353 14.948572 
+L 173.00254 16.33118 
+L 173.98155 18.126548 
+L 175.123732 20.717339 
+L 176.429079 24.286967 
+L 177.897598 29.000681 
+L 179.692446 35.615337 
+L 181.813638 44.367147 
+L 184.91384 58.245054 
+L 190.461572 83.161144 
+L 192.909093 93.115019 
+L 195.030286 100.899654 
+L 196.988306 107.299468 
+L 198.783169 112.473252 
+L 200.578017 116.986085 
+L 202.209708 120.534576 
+L 203.841384 123.58549 
+L 205.473075 126.176452 
+L 207.104751 128.35022 
+L 208.736442 130.152332 
+L 210.368133 131.62881 
+L 211.999809 132.824477 
+L 213.794657 133.865798 
+L 215.752693 134.73293 
+L 217.873869 135.421683 
+L 220.321406 135.972059 
+L 223.258444 136.389278 
+L 227.011312 136.67952 
+L 232.395871 136.850878 
+L 243.001818 136.917995 
+L 283.467614 136.922727 
+L 283.467614 136.922727 
+" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"></path>
+   </g>
+   <g id="line2d_26">
+    <path clip-path="url(#p577ab8d339)" d="M 55.194886 136.7876 
+L 65.80084 136.522951 
+L 73.14342 136.126434 
+L 79.017488 135.590287 
+L 83.912546 134.926494 
+L 88.318087 134.10523 
+L 92.234135 133.153577 
+L 95.823839 132.063161 
+L 99.250378 130.79875 
+L 102.513745 129.367712 
+L 105.77712 127.695009 
+L 109.04049 125.764112 
+L 112.303861 123.563438 
+L 115.567228 121.0879 
+L 118.993767 118.196043 
+L 122.583479 114.860884 
+L 126.499519 110.903145 
+L 131.06824 105.948686 
+L 138.247647 97.770815 
+L 144.611224 90.644946 
+L 148.527265 86.58968 
+L 151.790639 83.53067 
+L 154.564497 81.224439 
+L 157.175199 79.344213 
+L 159.459555 77.957411 
+L 161.743912 76.832369 
+L 163.865105 76.036198 
+L 165.823125 75.522599 
+L 167.781145 75.22717 
+L 169.739173 75.153087 
+L 171.697193 75.301157 
+L 173.655213 75.669778 
+L 175.613233 76.254996 
+L 177.734426 77.126086 
+L 179.855618 78.233158 
+L 182.139975 79.673624 
+L 184.587504 81.480058 
+L 187.361362 83.820856 
+L 190.461572 86.751108 
+L 194.051283 90.469341 
+L 198.783169 95.721754 
+L 211.67348 110.215095 
+L 215.752693 114.383395 
+L 219.505561 117.905417 
+L 222.9321 120.825256 
+L 226.195467 123.328266 
+L 229.458833 125.556318 
+L 232.722216 127.513772 
+L 235.985583 129.211617 
+L 239.24895 130.665968 
+L 242.675489 131.952578 
+L 246.2652 133.063568 
+L 250.18124 134.03448 
+L 254.423625 134.846714 
+L 259.155511 135.514669 
+L 264.54007 136.040363 
+L 270.903632 136.432353 
+L 279.225229 136.707949 
+L 283.467614 136.785216 
+L 283.467614 136.785216 
+" style="fill:none;stroke:#bf00bf;stroke-dasharray:5.55,2.4;stroke-dashoffset:0;stroke-width:1.5;"></path>
+   </g>
+   <g id="line2d_27">
+    <path clip-path="url(#p577ab8d339)" d="M 55.194886 136.922727 
+L 157.175199 136.813535 
+L 162.559758 136.566288 
+L 166.149461 136.184417 
+L 168.923327 135.668953 
+L 171.207684 135.025188 
+L 173.165712 134.257847 
+L 174.96056 133.330371 
+L 176.755415 132.138337 
+L 178.387099 130.77945 
+L 180.018782 129.113093 
+L 181.650474 127.093511 
+L 183.282157 124.674772 
+L 184.91384 121.812697 
+L 186.545532 118.467281 
+L 188.177207 114.605511 
+L 189.972071 109.733805 
+L 191.766919 104.197086 
+L 193.724939 97.412526 
+L 195.846131 89.247641 
+L 198.456825 78.224543 
+L 202.209708 61.239288 
+L 206.452077 42.27529 
+L 208.736442 33.113073 
+L 210.53129 26.820546 
+L 211.999809 22.424539 
+L 213.305156 19.173284 
+L 214.447346 16.884622 
+L 215.426348 15.362588 
+L 216.405366 14.263605 
+L 217.221196 13.679596 
+L 218.037042 13.401979 
+L 218.689715 13.401979 
+L 219.342388 13.599449 
+L 220.158234 14.122462 
+L 220.97408 14.948572 
+L 221.953082 16.331171 
+L 222.9321 18.126548 
+L 224.074274 20.71733 
+L 225.379621 24.286948 
+L 226.84814 29.000654 
+L 228.643003 35.615364 
+L 230.764196 44.367184 
+L 233.86439 58.245054 
+L 239.412122 83.161144 
+L 241.859643 93.115019 
+L 243.980835 100.899654 
+L 245.938856 107.299468 
+L 247.733719 112.473252 
+L 249.528567 116.986085 
+L 251.160243 120.534544 
+L 252.791934 123.58549 
+L 254.423625 126.176452 
+L 256.055301 128.35022 
+L 257.686992 130.152332 
+L 259.318668 131.628798 
+L 260.950359 132.824477 
+L 262.745207 133.865798 
+L 264.703242 134.73293 
+L 266.824419 135.421683 
+L 269.271956 135.972059 
+L 272.208978 136.389276 
+L 275.961862 136.67952 
+L 281.346421 136.850878 
+L 283.467614 136.879593 
+L 283.467614 136.879593 
+" style="fill:none;stroke:#008000;stroke-dasharray:9.6,2.4,1.5,2.4;stroke-dashoffset:0;stroke-width:1.5;"></path>
+   </g>
+   <g id="patch_3">
+    <path d="M 43.78125 143.1 
+L 43.78125 7.2 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"></path>
+   </g>
+   <g id="patch_4">
+    <path d="M 294.88125 143.1 
+L 294.88125 7.2 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"></path>
+   </g>
+   <g id="patch_5">
+    <path d="M 43.78125 143.1 
+L 294.88125 143.1 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"></path>
+   </g>
+   <g id="patch_6">
+    <path d="M 43.78125 7.2 
+L 294.88125 7.2 
+" style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"></path>
+   </g>
+   <g id="legend_1">
+    <g id="patch_7">
+     <path d="M 50.78125 59.234375 
+L 138.526563 59.234375 
+Q 140.526563 59.234375 140.526563 57.234375 
+L 140.526563 14.2 
+Q 140.526563 12.2 138.526563 12.2 
+L 50.78125 12.2 
+Q 48.78125 12.2 48.78125 14.2 
+L 48.78125 57.234375 
+Q 48.78125 59.234375 50.78125 59.234375 
+z
+" style="fill:#ffffff;opacity:0.8;stroke:#cccccc;stroke-linejoin:miter;"></path>
+    </g>
+    <g id="line2d_28">
+     <path d="M 52.78125 20.298438 
+L 72.78125 20.298438 
+" style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"></path>
+    </g>
+    <g id="line2d_29"></g>
+    <g id="text_15">
+     <!-- ort 0, var 1 -->
+     <defs>
+      <path d="M 30.609375 48.390625 
+Q 23.390625 48.390625 19.1875 42.75 
+Q 14.984375 37.109375 14.984375 27.296875 
+Q 14.984375 17.484375 19.15625 11.84375 
+Q 23.34375 6.203125 30.609375 6.203125 
+Q 37.796875 6.203125 41.984375 11.859375 
+Q 46.1875 17.53125 46.1875 27.296875 
+Q 46.1875 37.015625 41.984375 42.703125 
+Q 37.796875 48.390625 30.609375 48.390625 
+z
+M 30.609375 56 
+Q 42.328125 56 49.015625 48.375 
+Q 55.71875 40.765625 55.71875 27.296875 
+Q 55.71875 13.875 49.015625 6.21875 
+Q 42.328125 -1.421875 30.609375 -1.421875 
+Q 18.84375 -1.421875 12.171875 6.21875 
+Q 5.515625 13.875 5.515625 27.296875 
+Q 5.515625 40.765625 12.171875 48.375 
+Q 18.84375 56 30.609375 56 
+z
+" id="DejaVuSans-111"></path>
+      <path d="M 41.109375 46.296875 
+Q 39.59375 47.171875 37.8125 47.578125 
+Q 36.03125 48 33.890625 48 
+Q 26.265625 48 22.1875 43.046875 
+Q 18.109375 38.09375 18.109375 28.8125 
+L 18.109375 0 
+L 9.078125 0 
+L 9.078125 54.6875 
+L 18.109375 54.6875 
+L 18.109375 46.1875 
+Q 20.953125 51.171875 25.484375 53.578125 
+Q 30.03125 56 36.53125 56 
+Q 37.453125 56 38.578125 55.875 
+Q 39.703125 55.765625 41.0625 55.515625 
+z
+" id="DejaVuSans-114"></path>
+      <path d="M 18.3125 70.21875 
+L 18.3125 54.6875 
+L 36.8125 54.6875 
+L 36.8125 47.703125 
+L 18.3125 47.703125 
+L 18.3125 18.015625 
+Q 18.3125 11.328125 20.140625 9.421875 
+Q 21.96875 7.515625 27.59375 7.515625 
+L 36.8125 7.515625 
+L 36.8125 0 
+L 27.59375 0 
+Q 17.1875 0 13.234375 3.875 
+Q 9.28125 7.765625 9.28125 18.015625 
+L 9.28125 47.703125 
+L 2.6875 47.703125 
+L 2.6875 54.6875 
+L 9.28125 54.6875 
+L 9.28125 70.21875 
+z
+" id="DejaVuSans-116"></path>
+      <path id="DejaVuSans-32"></path>
+      <path d="M 11.71875 12.40625 
+L 22.015625 12.40625 
+L 22.015625 4 
+L 14.015625 -11.625 
+L 7.71875 -11.625 
+L 11.71875 4 
+z
+" id="DejaVuSans-44"></path>
+      <path d="M 2.984375 54.6875 
+L 12.5 54.6875 
+L 29.59375 8.796875 
+L 46.6875 54.6875 
+L 56.203125 54.6875 
+L 35.6875 0 
+L 23.484375 0 
+z
+" id="DejaVuSans-118"></path>
+      <path d="M 34.28125 27.484375 
+Q 23.390625 27.484375 19.1875 25 
+Q 14.984375 22.515625 14.984375 16.5 
+Q 14.984375 11.71875 18.140625 8.90625 
+Q 21.296875 6.109375 26.703125 6.109375 
+Q 34.1875 6.109375 38.703125 11.40625 
+Q 43.21875 16.703125 43.21875 25.484375 
+L 43.21875 27.484375 
+z
+M 52.203125 31.203125 
+L 52.203125 0 
+L 43.21875 0 
+L 43.21875 8.296875 
+Q 40.140625 3.328125 35.546875 0.953125 
+Q 30.953125 -1.421875 24.3125 -1.421875 
+Q 15.921875 -1.421875 10.953125 3.296875 
+Q 6 8.015625 6 15.921875 
+Q 6 25.140625 12.171875 29.828125 
+Q 18.359375 34.515625 30.609375 34.515625 
+L 43.21875 34.515625 
+L 43.21875 35.40625 
+Q 43.21875 41.609375 39.140625 45 
+Q 35.0625 48.390625 27.6875 48.390625 
+Q 23 48.390625 18.546875 47.265625 
+Q 14.109375 46.140625 10.015625 43.890625 
+L 10.015625 52.203125 
+Q 14.9375 54.109375 19.578125 55.046875 
+Q 24.21875 56 28.609375 56 
+Q 40.484375 56 46.34375 49.84375 
+Q 52.203125 43.703125 52.203125 31.203125 
+z
+" id="DejaVuSans-97"></path>
+     </defs>
+     <g transform="translate(80.78125 23.798438)scale(0.1 -0.1)">
+      <use xlink:href="#DejaVuSans-111"></use>
+      <use x="61.181641" xlink:href="#DejaVuSans-114"></use>
+      <use x="102.294922" xlink:href="#DejaVuSans-116"></use>
+      <use x="141.503906" xlink:href="#DejaVuSans-32"></use>
+      <use x="173.291016" xlink:href="#DejaVuSans-48"></use>
+      <use x="236.914062" xlink:href="#DejaVuSans-44"></use>
+      <use x="268.701172" xlink:href="#DejaVuSans-32"></use>
+      <use x="300.488281" xlink:href="#DejaVuSans-118"></use>
+      <use x="359.667969" xlink:href="#DejaVuSans-97"></use>
+      <use x="420.947266" xlink:href="#DejaVuSans-114"></use>
+      <use x="462.060547" xlink:href="#DejaVuSans-32"></use>
+      <use x="493.847656" xlink:href="#DejaVuSans-49"></use>
+     </g>
+    </g>
+    <g id="line2d_30">
+     <path d="M 52.78125 34.976562 
+L 72.78125 34.976562 
+" style="fill:none;stroke:#bf00bf;stroke-dasharray:5.55,2.4;stroke-dashoffset:0;stroke-width:1.5;"></path>
+    </g>
+    <g id="line2d_31"></g>
+    <g id="text_16">
+     <!-- ort 0, var 2 -->
+     <g transform="translate(80.78125 38.476562)scale(0.1 -0.1)">
+      <use xlink:href="#DejaVuSans-111"></use>
+      <use x="61.181641" xlink:href="#DejaVuSans-114"></use>
+      <use x="102.294922" xlink:href="#DejaVuSans-116"></use>
+      <use x="141.503906" xlink:href="#DejaVuSans-32"></use>
+      <use x="173.291016" xlink:href="#DejaVuSans-48"></use>
+      <use x="236.914062" xlink:href="#DejaVuSans-44"></use>
+      <use x="268.701172" xlink:href="#DejaVuSans-32"></use>
+      <use x="300.488281" xlink:href="#DejaVuSans-118"></use>
+      <use x="359.667969" xlink:href="#DejaVuSans-97"></use>
+      <use x="420.947266" xlink:href="#DejaVuSans-114"></use>
+      <use x="462.060547" xlink:href="#DejaVuSans-32"></use>
+      <use x="493.847656" xlink:href="#DejaVuSans-50"></use>
+     </g>
+    </g>
+    <g id="line2d_32">
+     <path d="M 52.78125 49.654688 
+L 72.78125 49.654688 
+" style="fill:none;stroke:#008000;stroke-dasharray:9.6,2.4,1.5,2.4;stroke-dashoffset:0;stroke-width:1.5;"></path>
+    </g>
+    <g id="line2d_33"></g>
+    <g id="text_17">
+     <!-- ort 3, var 1 -->
+     <g transform="translate(80.78125 53.154688)scale(0.1 -0.1)">
+      <use xlink:href="#DejaVuSans-111"></use>
+      <use x="61.181641" xlink:href="#DejaVuSans-114"></use>
+      <use x="102.294922" xlink:href="#DejaVuSans-116"></use>
+      <use x="141.503906" xlink:href="#DejaVuSans-32"></use>
+      <use x="173.291016" xlink:href="#DejaVuSans-51"></use>
+      <use x="236.914062" xlink:href="#DejaVuSans-44"></use>
+      <use x="268.701172" xlink:href="#DejaVuSans-32"></use>
+      <use x="300.488281" xlink:href="#DejaVuSans-118"></use>
+      <use x="359.667969" xlink:href="#DejaVuSans-97"></use>
+      <use x="420.947266" xlink:href="#DejaVuSans-114"></use>
+      <use x="462.060547" xlink:href="#DejaVuSans-32"></use>
+      <use x="493.847656" xlink:href="#DejaVuSans-49"></use>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clippath id="p577ab8d339">
+   <rect height="135.9" width="251.1" x="43.78125" y="7.2"></rect>
+  </clippath>
+ </defs>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Görüldüğü gibi ortalamayı değiştirmek $x$ ekseninde kaymalara, yaryansı değiştirmek dağılımın genişlemesine veya daralmasına sebep oluyor.</p>
+<p>Lineer regresyonda en küçük karelerin kullanımını açıklamak için, gözlemlerdeki hataların gürültülü olduğunu ve bu gürültünün normal dağılımdan geldiğini kabul edelim:</p>
+<p>
+$$\epsilon \sim \mathcal{N}(0, \sigma^2) \text{ olmak üzere } y = \mathbf{w}^\top \mathbf{x} + b + \epsilon.$$
+</p>
+<p>Dolayısıyla verilen bir $\mathbf{x}$ için özel bir $y$ görmenin olabililirlik (likelihood) fonksiyonunu</p>
+<p>
+$$p(y|\mathbf{x}) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2 \sigma^2} (y - \mathbf{w}^\top \mathbf{x} - b)^2\right)$$
+</p>
+<p>şeklinde yazabiliriz. Buradan maksimum olabilirlik prensibine göre $b$ ve $\mathbf{w}$ parametrelerinin en iyi değerleri veri kümesinin olabilirliğini en büyük yapanlardır:</p>
+<p>
+$$P(Y\mid X) = \prod_{i=1}^{n} p(y^{(i)}|\mathbf{x}^{(i)}).$$
+</p>
+<p>Maksimum olabilirlik prensibine göre seçilen kestiricilere (estimators) <em>maksimum olabilirlik kestiricileri</em> (MLE) denir. Üstel fonksiyonların çarpımını maksimum yapmak yerine genellikle logaritması maksimum yaılır. Optimizasyonda alışkanlık olarak maksimum yerine minimum incelendiğinden olabilirlik fonksiyonunun  negatifinin minimumunu arayacağız (NLL - Negative Log-Likelihood): $-\log p(\mathbf y|\mathbf X)$. İşlem yapılırsa</p>
+<p>
+$$-\log p(\mathbf y|\mathbf X) = \sum_{i=1}^n \frac{1}{2} \log(2 \pi \sigma^2) + \frac{1}{2 \sigma^2} \left(y^{(i)} - \mathbf{w}^\top \mathbf{x}^{(i)} - b\right)^2$$
+</p>
+<p>elde edilir. Şimdi yapacağımız son kabul $\sigma$ yani varyansın sabit olması. Dolayısıyla yukarıdaki eşitliğin sağ tarafındaki ilk terim ihmal edilebilir çünkü $\mathbf{w}$ veya $b$ ile bağımlı değildir. Maksimumu bulmak için türev alacağımız için türevi sıfır olacak birşeyi almadık. İkinci terim ise $\frac{1}{\sigma^2}$ katsayısı hariç hataların kareleri toplamıdır. Neyse ki çözüm $\sigma$ varyansından bağımsızdır. Sonuç olarak, hataların karelerinin toplamını minimize etmenin, Gauss dağılımından gelen gürültü eklenmiş lineer modelin maksimum olabilirlik çıkarımına denk olduğunu gösterdik.</p>
+<h2 id="Lİneer-Regresyondan-Derin-Ağlara-(Deep-Networks)">
+<a class="anchor" href="#L%C4%B0neer-Regresyondan-Derin-A%C4%9Flara-(Deep-Networks)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lİneer Regresyondan Derin Ağlara (Deep Networks)<a class="anchor-link" href="#L%C4%B0neer-Regresyondan-Derin-A%C4%9Flara-(Deep-Networks)"> </a>
+</h2>
+<p>Şu ana kadar sadece lineer fonksiyonlala çalıştık. Sinir ağları (neural networks) çok geniş bir model ailesini kapsar ama lineer modeli sinir ağları içerisinde tanımlamak iyi bir başlangıç olacaktır. Şimdi modelimizi <em>katmak</em> (layer) gösterimi ile ifade edelim.</p>
+<h3 id="Yapay-Sinir-Ağı-Diyagramı">
+<a class="anchor" href="#Yapay-Sinir-A%C4%9F%C4%B1-Diyagram%C4%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Yapay Sinir Ağı Diyagramı<a class="anchor-link" href="#Yapay-Sinir-A%C4%9F%C4%B1-Diyagram%C4%B1"> </a>
+</h3>
+<p>Derin Öğrenme uygulayıcıları modelin diyagramını çizerek görselleştirmek isterler. Aşağıda lineer modeli bir sinir ağı olarak gösteriyoruz. Burada sadece bağlantılar gösteriliyor, ağırlıkların değerleri verilmiyor. Görüldüğü gibi bu durumda her girdi (input) çıktıya (output) bağlı.</p>
+<p><img src="https://d2l.ai/_images/singleneuron.svg" alt="Linear regression is a single-layer neural network. "></p>
+<p>Gafikte, hesaplanacak bir tek nöron veya düğüm (node) olduğundan, lineer modeli tek sinir hücreli (neuron) yapay (artificial) sinir ağı olarak görürüz. Girdiler hazır verildiği için hesaplanmaz. Bu modelde her girdi çıktıya bağlı olduğundan bu dönüşüme <em>tam bağlantılı katman</em> (fully-connected layer) veya <em>yoğun katman</em> (dense layer) denir. Bu tür katmanları daha sonra ayrıntılı inceleyeceğiz.</p>
+<h3 id="Biyoloji">
+<a class="anchor" href="#Biyoloji" aria-hidden="true"><span class="octicon octicon-link"></span></a>Biyoloji<a class="anchor-link" href="#Biyoloji"> </a>
+</h3>
+<p>Lineer regresyon (1795) hesaplamalı yapay sinir ağlarından daha eski olsa da lineer regresyonu sinir ağlarının kronolojisine yerleştirmek doğru olmaz. Lineer modellerin yaay sinir ağlarına başlangıç için neden iyi oldğunu görmek için sibernetik/nöroeurofizyoloji uzmanı Warren McCulloch ve Walter Pitts tarafından yaay sinir ağlarının nasıl geliştirildiğine bakalım. Aşağıdaki resimde girdi terminali (dendrites), işlemci (nucleus), çıkış kablosu (axon) ve çıkış terminali (axon terminals) ve diğer nöronlara bağlantıyı sinapsis ile sağlayan bağlantılar vardır.</p>
+<p><img src="https://d2l.ai/_images/Neuron.svg" alt="The real neuron"></p>
+<p>Diğer nöronlardan veya retina gibi algılayıcılardan gelen $x_i$ bilgisi dentrit tarafından alınır. Bu bilgilerin yani girdilerin etki dereceleri $w_i$ <em>sinatik ağırlıklar</em> sayeinde belirlenir ve $x_i w_i$ çarpımları elde edilir. Farklı algılayıcılardan gelen bu ağırlıklı girdiler nükleusta bir araya getirilerek $y = \sum_i x_i w_i + b$ toplamı oluşturulur. Sonra işlemden geçirilmek üzere aksona gönderilir ve lineer olmayan $\sigma(y)$ işlemi uygulanır. Buradan ya kas gibi hedefe ya da diğer bir nörona aktarılır.</p>
+<p>Bu şekilde bir çok birimin doğru biçimde bağlanarak ve doğru öğrenme algoritması ile çok karmaşı davranışlar sergileceyeceği fikri nöronların biyolojik inclenenmesi sonucu elde edilmiştir.</p>
+<p>Derin Öğrenme araştırmalarının önemli kısmı nörolojiden (neuroscience) az da olsa etkilenmiştir. <em>Artificial Intelligence: A Modern Approach</em> kitabında Stuart Russell ve Peter Norvig, uçaklar kuşlardan ilham alsa da, kuş bilimi havacılığı yönledirmemiştir demektedir. Benzer şekilde, Derin Öğrenme alanındaki gelişmeler nörolojiden çok matematik, istatistik ve bilgisayar bilimleri kaynaklıdır.</p>
+<h2 id="Özet">
+<a class="anchor" href="#%C3%96zet" aria-hidden="true"><span class="octicon octicon-link"></span></a>Özet<a class="anchor-link" href="#%C3%96zet"> </a>
+</h2>
+<ul>
+<li>Makine Öğrenmesi modelinin önemli bileşenleri; eğitim kümesi, kayıp fonksiyonu, optimizasyon algoritması ve tabii ki en önemlisi modelin kendisidir. </li>
+<li>Vektörleştirme sayesinde işlemler de hesalamalar da hem sade hem de daha hızlı olur.</li>
+<li>Amaç fonksiyonunu en küçük yamak ile maksimum olabilirliği uygulamak aynı anlama gelebilir.</li>
+<li>Lineer modeller de sinir ağlarıdır.</li>
+</ul>
+<h2 id="Alıştırmalar">
+<a class="anchor" href="#Al%C4%B1%C5%9Ft%C4%B1rmalar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alıştırmalar<a class="anchor-link" href="#Al%C4%B1%C5%9Ft%C4%B1rmalar"> </a>
+</h2>
+<ol>
+<li>Elimizde $x_1, \ldots, x_n \in \mathbb{R}$ mevcut. Amacımız $\sum_i (x_i - b)^2$ ifadesini en küçük yaan $b$ sabitini bulmak. <ul>
+<li>En iyi $b$ değerini veren çözümü analitik olarak elde edin.</li>
+<li>Bu problemin ve çözümünün normal dağılım ile ilgisi nedir?</li>
+</ul>
+</li>
+<li>En küçük kareler kayıp fonksiyonu için lineer regresyonun analitik çözümünü elde edin. Sadelik açısından $b$ terimini ihmal edebilirsiniz ($X$ matirsinin sonuna birlerden oluşan bir sütun ekleyerek bunu yapabilirsiniz).<ul>
+<li>Optimizasyon problemini matris ve vektör gösterimi ile ifade edin. </li>
+<li>Kayıp fonksiyonunun $w$ cinsinden gradiyentini bulun. </li>
+<li>Gradiyenti sıfıra eşitleyip çözümü yanlız bırakın.</li>
+<li>Stokastik gradient azalım ile analitik çözümün birbirine göre avantajlarını açıklayın.</li>
+</ul>
+</li>
+<li>Eklediğimiz $\epsilon$ gürültü (hata) teriminin üstel dağılımla modellenmiş olsun. Yani $p(\epsilon) = \frac{1}{2} \exp(-|\epsilon|)$ dağılımı. <ul>
+<li>Verinin modele göre $-\log P(Y \mid X)$ negatig log-olabilirliğini bulun.</li>
+<li>Çözüm analitik olarak bulunabilir mi?</li>
+<li>Bu problemin çözümü için stokastik gradiyent azalım algoritması belirleyin. Ne gibi sorunlar çıkabilir? Mesela çözüme çok yaklaştığımızda ne olabilir? Bu sorunu nasıl düzeltiriz?</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://discuss.d2l.ai/t/40">Discussions</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="unverciftci/derin_ogrenme"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/derin_ogrenme/jupyter/2020/02/25/Linear-Regresyon.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/derin_ogrenme/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/derin_ogrenme/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Derin Öğrenmeye Giriş</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

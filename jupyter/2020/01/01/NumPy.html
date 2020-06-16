@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Numpy (✗) | Derin Öğrenme Kitabı</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Numpy (✗)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları." />
+<meta property="og:description" content="Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları." />
+<link rel="canonical" href="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html" />
+<meta property="og:url" content="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html" />
+<meta property="og:site_name" content="Derin Öğrenme Kitabı" />
+<meta property="og:image" content="https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları.","mainEntityOfPage":{"@type":"WebPage","@id":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html"},"@type":"BlogPosting","url":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html","headline":"Numpy (✗)","dateModified":"2020-01-01T00:00:00-06:00","datePublished":"2020-01-01T00:00:00-06:00","image":"https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/derin_ogrenme/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://unverciftci.github.io/derin_ogrenme/feed.xml" title="Derin Öğrenme Kitabı" /><link rel="shortcut icon" type="image/x-icon" href="/derin_ogrenme/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Numpy (✗) | Derin Öğrenme Kitabı</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Numpy (✗)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları." />
+<meta property="og:description" content="Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları." />
+<link rel="canonical" href="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html" />
+<meta property="og:url" content="https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html" />
+<meta property="og:site_name" content="Derin Öğrenme Kitabı" />
+<meta property="og:image" content="https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-01T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları.","mainEntityOfPage":{"@type":"WebPage","@id":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html"},"@type":"BlogPosting","url":"https://unverciftci.github.io/derin_ogrenme/jupyter/2020/01/01/NumPy.html","headline":"Numpy (✗)","dateModified":"2020-01-01T00:00:00-06:00","datePublished":"2020-01-01T00:00:00-06:00","image":"https://unverciftci.github.io/derin_ogrenme/images/chart-preview.png","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://unverciftci.github.io/derin_ogrenme/feed.xml" title="Derin Öğrenme Kitabı" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/derin_ogrenme/">Derin Öğrenme Kitabı</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/derin_ogrenme/bilgi/">Bilgi</a><a class="page-link" href="/derin_ogrenme/arama/">Arama</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Numpy (✗)</h1><p class="page-description">Makine Öğrenmesi ve Derin Öğrenme için gerekli Numpy konuları.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-01-01T00:00:00-06:00" itemprop="datePublished">
+        Jan 1, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/unverciftci/derin_ogrenme/tree/master/_notebooks/2020-01-01-NumPy.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/unverciftci/derin_ogrenme/master?filepath=_notebooks%2F2020-01-01-NumPy.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/unverciftci/derin_ogrenme/blob/master/_notebooks/2020-01-01-NumPy.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Set-up">Set up </a></li>
+<li class="toc-entry toc-h1"><a href="#Basics">Basics </a></li>
+<li class="toc-entry toc-h1"><a href="#Indexing">Indexing </a></li>
+<li class="toc-entry toc-h1"><a href="#Arithmetic">Arithmetic </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Dot-product">Dot product </a></li>
+<li class="toc-entry toc-h3"><a href="#Axis-operations">Axis operations </a></li>
+<li class="toc-entry toc-h3"><a href="#Broadcasting">Broadcasting </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Advanced">Advanced </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Transposing">Transposing </a></li>
+<li class="toc-entry toc-h3"><a href="#Reshaping">Reshaping </a></li>
+<li class="toc-entry toc-h3"><a href="#Unintended-reshaping">Unintended reshaping </a></li>
+<li class="toc-entry toc-h3"><a href="#Adding/removing-dimensions">Adding/removing dimensions </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Additional-resources">Additional resources </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-01-01-NumPy.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Set-up">
+<a class="anchor" href="#Set-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set up<a class="anchor-link" href="#Set-up"> </a>
+</h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Basics">
+<a class="anchor" href="#Basics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basics<a class="anchor-link" href="#Basics"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's take a took at how to create tensors with NumPy.</p>
+<ul>
+<li>
+<strong>Tensor</strong>: collection of values </li>
+</ul>
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/tensors.png" alt="" style="max-width: 650px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Scalar</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># scalar</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x: "</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="c1"># Number of dimensions</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x ndim: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="c1"># Dimensions</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x shape:"</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># Size of elements</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x size: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="c1"># Data type</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x dtype: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:  6
+x ndim:  0
+x shape: ()
+x size:  1
+x dtype:  int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Vector</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.3</span> <span class="p">,</span> <span class="mf">2.2</span> <span class="p">,</span> <span class="mf">1.7</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x: "</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x ndim: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x shape:"</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x size: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x dtype: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="c1"># notice the float datatype</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:  [1.3 2.2 1.7]
+x ndim:  1
+x shape: (3,)
+x size:  3
+x dtype:  float64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Matrix</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x ndim: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x shape:"</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x size: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x dtype: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[1 2]
+ [3 4]]
+x ndim:  2
+x shape: (2, 2)
+x size:  4
+x dtype:  int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3-D Tensor</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x ndim: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x shape:"</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x size: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x dtype: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[[1 2]
+  [3 4]]
+
+ [[5 6]
+  [7 8]]]
+x ndim:  3
+x shape: (2, 2, 2)
+x size:  8
+x dtype:  int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>NumPy also comes with several functions that allow us to create tensors quickly.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Functions</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"np.zeros((2,2)):</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"np.ones((2,2)):</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"np.eye((2)):</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">((</span><span class="mi">2</span><span class="p">)))</span> <span class="c1"># identity matrix </span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"np.random.random((2,2)):</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>np.zeros((2,2)):
+ [[0. 0.]
+ [0. 0.]]
+np.ones((2,2)):
+ [[1. 1.]
+ [1. 1.]]
+np.eye((2)):
+ [[1. 0.]
+ [0. 1.]]
+np.random.random((2,2)):
+ [[0.19151945 0.62210877]
+ [0.43772774 0.78535858]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Indexing">
+<a class="anchor" href="#Indexing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Indexing<a class="anchor-link" href="#Indexing"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Keep in mind that when indexing the row and column, indices start at 0. And like indexing with lists, we can use negative indices as well (where -1 is the last item).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/indexing.png" alt="" style="max-width: 300px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Indexing</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x: "</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x[0]: "</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x: "</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:  [1 2 3]
+x[0]:  1
+x:  [0 2 3]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Slicing</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x column 1: "</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> 
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x row 0: "</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span> 
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x rows 0,1 &amp; cols 1,2: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+x column 1:  [ 2  6 10]
+x row 0:  [1 2 3 4]
+x rows 0,1 &amp; cols 1,2: 
+ [[2 3]
+ [6 7]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Integer array indexing</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">rows_to_get</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"rows_to_get: "</span><span class="p">,</span> <span class="n">rows_to_get</span><span class="p">)</span>
+<span class="n">cols_to_get</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"cols_to_get: "</span><span class="p">,</span> <span class="n">cols_to_get</span><span class="p">)</span>
+<span class="c1"># Combine sequences above to get values to get</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"indexed values: "</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">rows_to_get</span><span class="p">,</span> <span class="n">cols_to_get</span><span class="p">])</span> <span class="c1"># (0, 0), (1, 2), (2, 1)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+rows_to_get:  [0 1 2]
+cols_to_get:  [0 2 1]
+indexed values:  [ 1  7 10]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Boolean array indexing</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x &gt; 2:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x[x &gt; 2]:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[1 2]
+ [3 4]
+ [5 6]]
+x &gt; 2:
+ [[False False]
+ [ True  True]
+ [ True  True]]
+x[x &gt; 2]:
+ [3 4 5 6]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Arithmetic">
+<a class="anchor" href="#Arithmetic" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arithmetic<a class="anchor-link" href="#Arithmetic"> </a>
+</h1>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Basic math</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x + y:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="c1"># or x + y</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x - y:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="c1"># or x - y</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x * y:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="c1"># or x * y</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x + y:
+ [[2. 4.]
+ [6. 8.]]
+x - y:
+ [[0. 0.]
+ [0. 0.]]
+x * y:
+ [[ 1.  4.]
+ [ 9. 16.]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dot-product">
+<a class="anchor" href="#Dot-product" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dot product<a class="anchor-link" href="#Dot-product"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One of the most common NumPy operations we’ll use in machine learning is matrix multiplication using the dot product. We take the rows of our first matrix (2) and the columns of our second matrix (2) to determine the dot product, giving us an output of <code>[2 X 2]</code>. The only requirement is that the inside dimensions match, in this case the first matrix has 3 columns and the second matrix has 3 rows.</p>
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/dot.gif" alt="" style="max-width: 450px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dot product</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="c1"># we can specify dtype</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> · </span><span class="si">{</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(2, 3) · (3, 2) = (2, 2)
+[[ 58.  64.]
+ [139. 154.]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Axis-operations">
+<a class="anchor" href="#Axis-operations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Axis operations<a class="anchor-link" href="#Axis-operations"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also do operations across a specific axis.</p>
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/axis.gif" alt="" style="max-width: 450px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sum across a dimension</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"sum all: "</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># adds all elements</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"sum axis=0: "</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># sum across rows</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"sum axis=1: "</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># sum across columns</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2]
+ [3 4]]
+sum all:  10
+sum axis=0:  [4 6]
+sum axis=1:  [3 7]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Min/max</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"min: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"max: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"min axis=0: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"min axis=1: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>min:  1
+max:  6
+min axis=0:  [1 2 3]
+min axis=1:  [1 4]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Broadcasting">
+<a class="anchor" href="#Broadcasting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Broadcasting<a class="anchor-link" href="#Broadcasting"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, we’re adding a vector with a scalar. Their dimensions aren’t compatible as is but how does NumPy still gives us the right result? This is where broadcasting comes in. The scalar is <em>broadcast</em> across the vector so that they have compatible shapes.</p>
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/broadcasting.png" alt="" style="max-width: 300px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Broadcasting</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># vector</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># scalar</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>z:
+ [4 5]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Advanced">
+<a class="anchor" href="#Advanced" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advanced<a class="anchor-link" href="#Advanced"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transposing">
+<a class="anchor" href="#Transposing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transposing<a class="anchor-link" href="#Transposing"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We often need to change the dimensions of our tensors for operations like the dot product. If we need to switch two dimensions, we can transpose 
+the tensor.</p>
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/transpose.png" alt="" style="max-width: 400px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Transposing</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x.shape: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># flip dimensions at index 0 and 1</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y.shape: "</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[1 2 3]
+ [4 5 6]]
+x.shape:  (2, 3)
+y:
+ [[1 4]
+ [2 5]
+ [3 6]]
+y.shape:  (3, 2)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Reshaping">
+<a class="anchor" href="#Reshaping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reshaping<a class="anchor-link" href="#Reshaping"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sometimes, we'll need to alter the dimensions of the matrix. Reshaping allows us to transform a tensor into different permissible shapes -- our reshaped tensor has the same amount of values in the tensor. (1X6 = 2X3). We can also use <code>-1</code> on a dimension and NumPy will infer the dimension based on our input tensor.</p>
+<p>The way reshape works is by looking at each dimension of the new tensor and separating our original tensor into that many units. So here the dimension at index 0 of the new tensor is 2 so we divide our original tensor into 2 units, and each of those has 3 values.</p>
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/reshape.png" alt="" style="max-width: 450px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reshaping</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x.shape: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y.shape: "</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z.shape: "</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[1 2 3 4 5 6]]
+x.shape:  (1, 6)
+y: 
+ [[1 2 3]
+ [4 5 6]]
+y.shape:  (2, 3)
+z: 
+ [[1 2 3]
+ [4 5 6]]
+z.shape:  (2, 3)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unintended-reshaping">
+<a class="anchor" href="#Unintended-reshaping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unintended reshaping<a class="anchor-link" href="#Unintended-reshaping"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Though reshaping is very convenient to manipulate tensors, we must be careful of their pitfalls as well. Let's look at the example below. Suppose we have <code>x</code>, which has the shape <code>[2 X 3 X 4]</code>.</p>
+
+<pre><code>[[[ 1  1  1  1]
+  [ 2  2  2  2]
+  [ 3  3  3  3]]
+ [[10 10 10 10]
+  [20 20 20 20]
+  [30 30 30 30]]]</code></pre>
+<p>We want to reshape x so that it has shape <code>[3 X 8]</code> which we'll get by moving the dimension at index 0 to become the dimension at index 1 and then combining the last two dimensions. But when we do this, we want our output</p>
+<p>to look like:
+✅</p>
+
+<pre><code>[[ 1  1  1  1 10 10 10 10]
+ [ 2  2  2  2 20 20 20 20]
+ [ 3  3  3  3 30 30 30 30]]</code></pre>
+<p>and not like:
+❌</p>
+
+<pre><code>[[ 1  1  1  1  2  2  2  2]
+ [ 3  3  3  3 10 10 10 10]
+ [20 20 20 20 30 30 30 30]]</code></pre>
+<p>even though they both have the same shape <code>[3X8]</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
+              <span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">]]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x.shape: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[[ 1  1  1  1]
+  [ 2  2  2  2]
+  [ 3  3  3  3]]
+
+ [[10 10 10 10]
+  [20 20 20 20]
+  [30 30 30 30]]]
+x.shape:  (2, 3, 4)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When we naively do a reshape, we get the right shape but the values are not what we're looking for.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/reshape_wrong.png" alt="" style="max-width: 600px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Unintended reshaping</span>
+<span class="n">z_incorrect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z_incorrect:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">z_incorrect</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z_incorrect.shape: "</span><span class="p">,</span> <span class="n">z_incorrect</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>z_incorrect:
+ [[ 1  1  1  1  2  2  2  2]
+ [ 3  3  3  3 10 10 10 10]
+ [20 20 20 20 30 30 30 30]]
+z_incorrect.shape:  (3, 8)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Instead, if we transpose the tensor and then do a reshape, we get our desired tensor. Transpose allows us to put our two vectors that we want to combine together and then we use reshape to join them together.
+Always create a dummy example like this when you’re unsure about reshaping. Blindly going by the tensor shape can lead to lots of issues downstream.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div align="left">
+<figure>
+  
+    <img class="docimage" src="https://raw.githubusercontent.com/madewithml/images/master/basics/03_NumPy/reshape_right.png" alt="" style="max-width: 600px">
+    
+    
+</figure>
+
+</div>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Intended reshaping</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y.shape: "</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">z_correct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z_correct:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">z_correct</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"z_correct.shape: "</span><span class="p">,</span> <span class="n">z_correct</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>y:
+ [[[ 1  1  1  1]
+  [10 10 10 10]]
+
+ [[ 2  2  2  2]
+  [20 20 20 20]]
+
+ [[ 3  3  3  3]
+  [30 30 30 30]]]
+y.shape:  (3, 2, 4)
+z_correct:
+ [[ 1  1  1  1 10 10 10 10]
+ [ 2  2  2  2 20 20 20 20]
+ [ 3  3  3  3 30 30 30 30]]
+z_correct.shape:  (3, 8)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Adding/removing-dimensions">
+<a class="anchor" href="#Adding/removing-dimensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding/removing dimensions<a class="anchor-link" href="#Adding/removing-dimensions"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also easily add and remove dimensions to our tensors and we'll want to do this to make tensors compatible for certain operations.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adding dimensions</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x.shape: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># expand dim 1</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y.shape: "</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1"># notice extra set of brackets are added</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[1 2 3]
+ [4 5 6]]
+x.shape:  (2, 3)
+y: 
+ [[[1 2 3]]
+
+ [[4 5 6]]]
+y.shape:  (2, 1, 3)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Removing dimensions</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],[[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"x.shape: "</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># squeeze dim 1</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"y.shape: "</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># notice extra set of brackets are gone</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x:
+ [[[1 2 3]]
+
+ [[4 5 6]]]
+x.shape:  (2, 1, 3)
+y: 
+ [[1 2 3]
+ [4 5 6]]
+y.shape:  (2, 3)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Additional-resources">
+<a class="anchor" href="#Additional-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional resources<a class="anchor-link" href="#Additional-resources"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>NumPy reference manual</strong>: We don't have to memorize anything here and we will be taking a closer look at NumPy in the later lessons. If you want to learn more checkout the <a href="https://docs.scipy.org/doc/numpy-1.15.1/reference/">NumPy reference manual</a>.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p>Share and discover ML projects at <a href="https://madewithml.com/">Made With ML</a>.</p>
+<div align="left">
+<a class="ai-header-badge" target="_blank" href="https://github.com/madewithml/basics"><img src="https://img.shields.io/github/stars/madewithml/basics.svg?style=social&amp;label=Star"></a> 
+<a class="ai-header-badge" target="_blank" href="https://www.linkedin.com/company/madewithml"><img src="https://img.shields.io/badge/style--5eba00.svg?label=LinkedIn&amp;logo=linkedin&amp;style=social"></a> 
+<a class="ai-header-badge" target="_blank" href="https://twitter.com/madewithml"><img src="https://img.shields.io/twitter/follow/madewithml.svg?label=Follow&amp;style=social"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="unverciftci/derin_ogrenme"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/derin_ogrenme/jupyter/2020/01/01/NumPy.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/derin_ogrenme/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/derin_ogrenme/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Derin Öğrenmeye Giriş</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

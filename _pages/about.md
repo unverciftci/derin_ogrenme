@@ -1,13 +1,17 @@
 ---
 layout: page
-title: About Me
-permalink: /about/
+title: Bilgi
+permalink: /bilgi/
 ---
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
+Bu kitap Derin Öğrenme konusunda bazı temel konuları içermektedir. Bölümlerin genellikle "Dive into Deep Learning" kitabından alınması planlanmaktadır. Siz de bize yardım edebilirsiniz!
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+Katkıda bulunanlar:
+Ünver Çiftçi, 
+Tayfun Ünal
+
+Hata ve eklemeler için: unverciftci@gmail.com.
 
 
 
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+

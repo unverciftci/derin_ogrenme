@@ -233,7 +233,7 @@ o_2 &amp;= x_1 w_{21} + x_2 w_{22} + x_3 w_{23} + x_4 w_{24} + b_2,\\
 o_3 &amp;= x_1 w_{31} + x_2 w_{32} + x_3 w_{33} + x_4 w_{34} + b_3
 \end{aligned}
 $$<p>elde edilir. Bu hesabı aşağıdaki sinir ağı (neural network) diyagramı ile gösterebiliriz. Lineer regresyonda olduğu gibi, lojistik regresyon modeli de bir tek katman içerir. Her bir $o_1, o_2$, and $o_3$ çıktısı tüm $x_1$, $x_2$, $x_3$, and $x_4$ girdileri ile bağımlı olduğundan, çıktı katmanı tam bağlantılı katmanıdır (fully-connected layer).</p>
-<p><img src="http://d2l.ai/_images/softmaxreg.svg" alt="Softmax regression is a single-layer neural network.  "></p>
+<p><img src="https://d2l.ai/_images/softmaxreg.svg" alt="Softmax regression is a single-layer neural network.  "></p>
 <p>Modelimizi daha derlitoplu ifade etmek için, Lineer Cebir gösterimi kullanacağız. Vektör formatında $\mathbf{o} = \mathbf{W} \mathbf{x} + \mathbf{b}$ yazarak hem matematiksel açıdan hem de kod yazmada daha uygun bir form elde edilir. Burada tüm ağırlıklar $3\times4$ ebatında $\mathbf{W}$ matrisini oluşturur. Verilen bir $\mathbf{x}$veri örneği için çıktı vektörümüz, ağırlık matris ile örnek vektörünün çarpımına $\mathbf{b}$ yanlılık vektörünün eklenmesiyle elde edilir.</p>
 <h3 id="Softmaks-İşlemi-(Softmax-Operation)">
 <a class="anchor" href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softmaks İşlemi (Softmax Operation)<a class="anchor-link" href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)"> </a>

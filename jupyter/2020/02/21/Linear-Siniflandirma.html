@@ -114,7 +114,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      15 min read
+      14 min read
     
 </span></p>
 
@@ -153,7 +153,7 @@ window.onload = wrap_img;
 <a href="#S%C4%B1n%C4%B1fland%C4%B1rma-(Classification)">Sınıflandırma (Classification) </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#A%C4%9F-Yap%C4%B1s%C4%B1-(Network-Architecture)">Ağ Yapısı (Network Architecture) </a></li>
-<li class="toc-entry toc-h3"><a href="#Softmaks-%C4%B0%C5%9Flemcisi-(Softmax-Operation)">Softmaks İşlemcisi (Softmax Operation) </a></li>
+<li class="toc-entry toc-h3"><a href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)">Softmaks İşlemi (Softmax Operation) </a></li>
 <li class="toc-entry toc-h3"><a href="#Vectorization-for-Minibatches">Vectorization for Minibatches </a></li>
 </ul>
 </li>
@@ -235,62 +235,24 @@ o_3 &amp;= x_1 w_{31} + x_2 w_{32} + x_3 w_{33} + x_4 w_{34} + b_3
 $$<p>elde edilir. Bu hesabı aşağıdaki sinir ağı (neural network) diyagramı ile gösterebiliriz. Lineer regresyonda olduğu gibi, lojistik regresyon modeli de bir tek katman içerir. Her bir $o_1, o_2$, and $o_3$ çıktısı tüm $x_1$, $x_2$, $x_3$, and $x_4$ girdileri ile bağımlı olduğundan, çıktı katmanı tam bağlantılı katmanıdır (fully-connected layer).</p>
 <p><img src="http://d2l.ai/_images/softmaxreg.svg" alt="Softmax regression is a single-layer neural network.  "></p>
 <p>Modelimizi daha derlitoplu ifade etmek için, Lineer Cebir gösterimi kullanacağız. Vektör formatında $\mathbf{o} = \mathbf{W} \mathbf{x} + \mathbf{b}$ yazarak hem matematiksel açıdan hem de kod yazmada daha uygun bir form elde edilir. Burada tüm ağırlıklar $3\times4$ ebatında $\mathbf{W}$ matrisini oluşturur. Verilen bir $\mathbf{x}$veri örneği için çıktı vektörümüz, ağırlık matris ile örnek vektörünün çarpımına $\mathbf{b}$ yanlılık vektörünün eklenmesiyle elde edilir.</p>
-<h3 id="Softmaks-İşlemcisi-(Softmax-Operation)">
-<a class="anchor" href="#Softmaks-%C4%B0%C5%9Flemcisi-(Softmax-Operation)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softmaks İşlemcisi (Softmax Operation)<a class="anchor-link" href="#Softmaks-%C4%B0%C5%9Flemcisi-(Softmax-Operation)"> </a>
+<h3 id="Softmaks-İşlemi-(Softmax-Operation)">
+<a class="anchor" href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softmaks İşlemi (Softmax Operation)<a class="anchor-link" href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)"> </a>
 </h3>
-<p>Modelimizin çıktılarını olasılıklar olarak yorumlamak istiyoruz.</p>
-<p>The main approach that we are going to take here
-is to interpret the outputs of our model as probabilities.
-We will optimize our parameters to produce probabilities
-that maximize the likelihood of the observed data.
-Then, to generate predictions, we will set a threshold,
-for example, choosing the <em>argmax</em> of the predicted probabilities.</p>
-<p>Put formally, we would like outputs $\hat{y}_k$
-that we can interpret as the probability
-that a given item belongs to class $k$.
-Then we can choose the class with the largest output value
-as our prediction $\operatorname*{argmax}_k y_k$.
-For example, if $\hat{y}_1$, $\hat{y}_2$, and $\hat{y}_3$
-are $0.1$, $0.8$, and $0.1$, respectively,
-then we predict category $2$, which (in our example) represents "chicken".</p>
-<p>You might be tempted to suggest that we interpret
-the logits $o$ directly as our outputs of interest.
-However, there are some problems with directly
-interpreting the output of the linear layer as a probability.
-Nothing constrains these numbers to sum to 1.
-Moreover, depending on the inputs, they can take negative values.
-These violate basic axioms of probability presented in :numref:<code>sec_prob</code></p>
-<p>To interpret our outputs as probabilities,
-we must guarantee that (even on new data),
-they will be nonnegative and sum up to 1.
-Moreover, we need a training objective that encourages
-the model to estimate faithfully <em>probabilities</em>.
-Of all instances when a classifier outputs $0.5$,
-we hope that half of those examples
-will <em>actually</em> belong to the predicted class.
-This is a property called <em>calibration</em>.</p>
-<p>The <em>softmax function</em>, invented in 1959 by the social scientist
-R Duncan Luce in the context of <em>choice models</em> does precisely this.
-To transform our logits such that they become nonnegative and sum to $1$,
-while requiring that the model remains differentiable,
-we first exponentiate each logit (ensuring non-negativity)
-and then divide by their sum (ensuring that they sum to $1$).</p>
+<p>Modelimizin çıktılarını olasılıklar olarak yorumlamak istiyoruz. Parametrelerimizi, verinin olabılırılığini maksimum yapacak şekilde belirleyeceğiz. Daha sonra da tahminler üretebilmek için, bir eşik belirleyeceğiz. Örneğin elde edilen olasılıklar üzerinden en büyüğüne karşılık gelen sınıfı seçeceğiz.</p>
+<p>Daha açık ifade edelim: $\hat{y}_k$ çıktısını verilen bir girdinin $k$ sınıfında olma olasılığı anlamını taşımasını istiyoruz. Bu durumda $\operatorname*{argmax}_k y_k$ işlemi sonucunda en büyük değere sahip sınıfı seçeriz. Mesela $\hat{y}_1$, $\hat{y}_2$, and $\hat{y}_3$ çıktıları $0.1$, $0.8$, and $0.1$ değerlerini alıyorsa, seçeceğimiz sınıf $2$ numaralı sınıftır, yani örneğimizdeki "tavuk" resmidir.</p>
+<p>Yukarıda ${o}$ ile gösterilen ve "logit" denilen sayılar modelin çıktıları gibi görünebilir. Ancak lineer katmanın çıktılarını olasılıklar gibi ele almak sorun çıkarabilir. Bunların toplamının $1$ olması gerekiyor. Hatta girdilere bağlı olarak negatif değerler bile alıyorlar. Bunlar olasılığın temel aksiyomlarını (kabullerini) ihlal ediyor.</p>
+<p>Bunları olasılıklarolarak alabilmemiz için her girdi için toplamlarının $1$ olması gerekiyor. Dahası kayıp fonksiyonunu da olasılıkların anlamlı olmasını sağlayacak şekilde seçmeliyiz. Modelimizin $0.5$ sonucunu verdiği tüm durumlarda bu örneklerin yarısının belirtilen sınıfa ait olduğunu düşünürüz. Buna <em>aratlama</em> (calibration) denir.</p>
+<p>Softmaks fonksiyonu 1959 yılında sosyal bilimci R. Duncan Luce tarafından bahsettiğimiz sınıflandırmaya benzer olan <em>seçim modeli</em> için bulundu. Elde edilen $o$ değerlerini negatif olmayan ve toplamları $1$ olan sayılara çevirmek, bunun yanında modelimizin türevlenebilir olmasını şu şekilde sağlayacağız: Bir $o$ sayısının üstel fonksiyon altındaki değerini diğer tüm sayıların üstellerinin toplamına oranlayacağız. Sayının üstelini almak sonucun negatif olmamasını, toplama oranlamak da sonuçların toplamının $1$ olmasını garanti eder. Matemaiksel olarak</p>
 $$
-\hat{\mathbf{y}} = \mathrm{softmax}(\mathbf{o})\quad \text{where}\quad
-\hat{y}_i = \frac{\exp(o_i)}{\sum_j \exp(o_j)}.
-$$<p>It is easy to see $\hat{y}_1 + \hat{y}_2 + \hat{y}_3 = 1$
-with $0 \leq \hat{y}_i \leq 1$ for all $i$.
-Thus, $\hat{y}$ is a proper probability distribution
-and the values of $\hat{\mathbf{y}}$ can be interpreted accordingly.
-Note that the softmax operation does not change the ordering among the logits,
-and thus we can still pick out the most likely class by:</p>
+\hat{y}_i = \frac{\exp(o_i)}{\sum_j \exp(o_j)} \quad
+ \text{olmak üzere}\quad
+\hat{\mathbf{y}} = \mathrm{softmax}(\mathbf{o})
+$$<p>şeklinde yazabiliriz.</p>
+<p>Üçlü örneğimizde her $i$ için $0 \leq \hat{y}_i \leq 1$ ve $\hat{y}_1 + \hat{y}_2 + \hat{y}_3 = 1$ olacağını görebilirsiniz. Dolayısıyla $\hat{y}$ bir olasılık dağılımı belirtir ve $\hat{\mathbf{y}}$  vektörünün değerleri de bu şekilde yorumlanır. Softmaks işlemi büyüklük küçüklük sıralamsını değiştirmez ve yani en olası sınıfı iki yoldan da seçebiliriz:</p>
 $$
 \hat{\imath}(\mathbf{o}) = \operatorname*{argmax}_i o_i = \operatorname*{argmax}_i \hat y_i.
-$$<p>The logits $\mathbf{o}$ then are simply the pre-softmax values
-that determining the probabilities assigned to each category.
-Summarizing it all in vector notation we get
-${\mathbf{o}}^{(i)} = \mathbf{W} {\mathbf{x}}^{(i)} + {\mathbf{b}}$,
-where ${\hat{\mathbf{y}}}^{(i)} = \mathrm{softmax}({\mathbf{o}}^{(i)})$.</p>
+$$<p>Sonuç olarak $\mathbf{o}$ vektörünü oluşturan sayılar, softmaks öncesi her sınıfın olasılıklarını belirleyen sayılardır. Vektör gösterimi ile ${\mathbf{o}}^{(i)} = \mathbf{W} {\mathbf{x}}^{(i)} + {\mathbf{b}}$,
+where ${\hat{\mathbf{y}}}^{(i)} = \mathrm{softmax}({\mathbf{o}}^{(i)})$ şeklinde yazabiliriz.</p>
 <h3 id="Vectorization-for-Minibatches">
 <a class="anchor" href="#Vectorization-for-Minibatches" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vectorization for Minibatches<a class="anchor-link" href="#Vectorization-for-Minibatches"> </a>
 </h3>

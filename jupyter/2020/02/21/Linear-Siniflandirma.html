@@ -85,31 +85,25 @@ window.onload = wrap_img;
 </script>
 </head><body><header class="site-header">
 
-  <div class="wrapper">
-<a class="site-title" rel="author" href="/derin_ogrenme/">Derin Öğrenme Kitabı</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+  <div class="wrapper"><a class="site-title" rel="author" href="/derin_ogrenme/">Derin Öğrenme Kitabı</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewbox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
             </svg>
           </span>
         </label>
 
-        <div class="trigger">
-<a class="page-link" href="/derin_ogrenme/bilgi/">Bilgi</a><a class="page-link" href="/derin_ogrenme/arama/">Arama</a>
-</div>
-      </nav>
-</div>
+        <div class="trigger"><a class="page-link" href="/derin_ogrenme/bilgi/">Bilgi</a><a class="page-link" href="/derin_ogrenme/arama/">Arama</a></div>
+      </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Softmaks Regresyonu (✗)</h1>
-<p class="page-description">Lineer sınıflandırma modeli.</p>
-<p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-02-21T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Softmaks Regresyonu (✗)</h1><p class="page-description">Lineer sınıflandırma modeli.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-02-21T00:00:00-06:00" itemprop="datePublished">
         Feb 21, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -133,13 +127,13 @@ window.onload = wrap_img;
 
           <div class="px-2">
     <a href="https://mybinder.org/v2/gh/unverciftci/derin_ogrenme/master?filepath=_notebooks%2F2020-02-21-Linear-Siniflandirma.ipynb" target="_blank">
-        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/binder.svg" alt="Open In Binder">
+        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
     <a href="https://colab.research.google.com/github/unverciftci/derin_ogrenme/blob/master/_notebooks/2020-02-21-Linear-Siniflandirma.ipynb" target="_blank">
-        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/colab.svg" alt="Open In Colab">
+        <img class="notebook-badge-image" src="/derin_ogrenme/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
         </div>
@@ -147,27 +141,23 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1">
-<a href="#Softmaks-Regresyonu">Softmaks Regresyonu </a>
+<li class="toc-entry toc-h1"><a href="#Softmaks-Regresyonu">Softmaks Regresyonu </a>
 <ul>
-<li class="toc-entry toc-h2">
-<a href="#S%C4%B1n%C4%B1fland%C4%B1rma-(Classification)">Sınıflandırma (Classification) </a>
+<li class="toc-entry toc-h2"><a href="#Sınıflandırma-(Classification)">Sınıflandırma (Classification) </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#A%C4%9F-Yap%C4%B1s%C4%B1-(Network-Architecture)">Ağ Yapısı (Network Architecture) </a></li>
-<li class="toc-entry toc-h3"><a href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)">Softmaks İşlemi (Softmax Operation) </a></li>
-<li class="toc-entry toc-h3"><a href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1n%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)">Küçük Yığınlarını Vektörleştirme (Vectorization for Minibatches) </a></li>
+<li class="toc-entry toc-h3"><a href="#Ağ-Yapısı-(Network-Architecture)">Ağ Yapısı (Network Architecture) </a></li>
+<li class="toc-entry toc-h3"><a href="#Softmaks-İşlemi-(Softmax-Operation)">Softmaks İşlemi (Softmax Operation) </a></li>
+<li class="toc-entry toc-h3"><a href="#Küçük-Yığınları-Vektörleştirme-(Vectorization-for-Minibatches)">Küçük Yığınları Vektörleştirme (Vectorization for Minibatches) </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2">
-<a href="#Loss-Function">Loss Function </a>
+<li class="toc-entry toc-h2"><a href="#Kayıp-Fonksiyonu-(Loss-Function)">Kayıp Fonksiyonu (Loss Function) </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#Log-Likelihood">Log-Likelihood </a></li>
+<li class="toc-entry toc-h3"><a href="#Olabilirliğin-Logaritması-(Log-Likelihood)">Olabilirliğin Logaritması (Log-Likelihood) </a></li>
 <li class="toc-entry toc-h3"><a href="#Softmax-and-Derivatives">Softmax and Derivatives </a></li>
 <li class="toc-entry toc-h3"><a href="#Cross-Entropy-Loss">Cross-Entropy Loss </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2">
-<a href="#Information-Theory-Basics">Information Theory Basics </a>
+<li class="toc-entry toc-h2"><a href="#Information-Theory-Basics">Information Theory Basics </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Entropy">Entropy </a></li>
 <li class="toc-entry toc-h3"><a href="#Surprisal">Surprisal </a></li>
@@ -180,8 +170,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Exercises">Exercises </a></li>
 </ul>
 </li>
-</ul>
-<!--
+</ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -254,43 +243,26 @@ $$
 \hat{\imath}(\mathbf{o}) = \operatorname*{argmax}_i o_i = \operatorname*{argmax}_i \hat y_i.
 $$<p>Sonuç olarak $\mathbf{o}$ vektörünü oluşturan sayılar, softmaks öncesi her sınıfın olasılıklarını belirleyen sayılardır. Vektör gösterimi ile ${\mathbf{o}}^{(i)} = \mathbf{W} {\mathbf{x}}^{(i)} + {\mathbf{b}}$,
 where ${\hat{\mathbf{y}}}^{(i)} = \mathrm{softmax}({\mathbf{o}}^{(i)})$ şeklinde yazabiliriz.</p>
-<h3 id="Küçük-Yığınlarını-Vektörleştirme-(Vectorization-for-Minibatches)">
-<a class="anchor" href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1n%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Küçük Yığınlarını Vektörleştirme (Vectorization for Minibatches)<a class="anchor-link" href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1n%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)"> </a>
+<h3 id="Küçük-Yığınları-Vektörleştirme-(Vectorization-for-Minibatches)">
+<a class="anchor" href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Küçük Yığınları Vektörleştirme (Vectorization for Minibatches)<a class="anchor-link" href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)"> </a>
 </h3>
-<p>To improve computational efficiency and take advantage of GPUs,
-we typically carry out vector calculations for minibatches of data.
-Assume that we are given a minibatch $\mathbf{X}$ of examples
-with dimensionality $d$ and batch size $n$.
-Moreover, assume that we have $q$ categories (outputs).
-Then the minibatch features $\mathbf{X}$ are in $\mathbb{R}^{n \times d}$,
-weights $\mathbf{W} \in \mathbb{R}^{d \times q}$,
-and the bias satisfies $\mathbf{b} \in \mathbb{R}^q$.</p>
+<p>Etkin bir hesaplama ve GPU kullanabilmek için verinin küçük veri yığınları ile vektör hesabı yapılır. Verinin bir kısmından oluşan $\mathbf{X}$ yığınını ele alalım. Yığın $n$ elemandan örnek veriden ve her bir örnek $d$ boyutlu olsun. Sınıfların (çıktılar) saysının da $q$ olduğunu kabul edelim. Bu durumda küçük yığının $\mathbf{X}$ özellik matrisi $\mathbb{R}^{n \times d}$ uzayındadır. Benzer şekilde ağırlıklar $\mathbf{W} \in \mathbb{R}^{d \times q}$ ve yanlılık terimi $\mathbf{b} \in \mathbb{R}^q$ olur. Dolayısıyla denklemlerimiz<br>
 $$
 \begin{aligned}
 \mathbf{O} &amp;= \mathbf{X} \mathbf{W} + \mathbf{b}, \\
 \hat{\mathbf{Y}} &amp; = \mathrm{softmax}(\mathbf{O}).
 \end{aligned}
-$$<p>This accelerates the dominant operation into
-a matrix-matrix product $\mathbf{W} \mathbf{X}$
-vs the matrix-vector products we would be executing
-if we processed one example at a time.
-The softmax itself can be computed
-by exponentiating all entries in $\mathbf{O}$
-and then normalizing them by the sum.</p>
-<h2 id="Loss-Function">
-<a class="anchor" href="#Loss-Function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loss Function<a class="anchor-link" href="#Loss-Function"> </a>
+$$
+formunda yazılabilir.</p>
+<p>Veri kümesindeki örnekler için tek tek hesaplama yapmak istediğimizde matris-vektör çarpımı yapacaktık, burada ise matris-matris çarpımı ile işlemleri hızlandırıyoruz. Softmaks için de önce $\mathbf{O}$ matrsinin eksponansiyeli alınır, daha sonra da tolama bölünerek normalleştirme yapılır.</p>
+<h2 id="Kayıp-Fonksiyonu-(Loss-Function)">
+<a class="anchor" href="#Kay%C4%B1p-Fonksiyonu-(Loss-Function)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kayıp Fonksiyonu (Loss Function)<a class="anchor-link" href="#Kay%C4%B1p-Fonksiyonu-(Loss-Function)"> </a>
 </h2>
-<p><img class="emoji" title=":label:" alt=":label:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3f7.png" height="20" width="20"><code>section_cross_entropy</code></p>
-<p>Next, we need a <em>loss function</em> to measure
-the quality of our predicted probabilities.
-We will rely on <em>likelihood maximization</em>,
-the very same concept that we encountered
-when providing a probabilistic justification
-for the least squares objective in linear regression
-(:numref:<code>sec_linear_regression</code>).</p>
-<h3 id="Log-Likelihood">
-<a class="anchor" href="#Log-Likelihood" aria-hidden="true"><span class="octicon octicon-link"></span></a>Log-Likelihood<a class="anchor-link" href="#Log-Likelihood"> </a>
+<p>Şimdi tahminlerimizi oluşturan olasılıkların niteliğini ölçmek için bir kayıp fonksiyonu gerekiyor. Lineer regresyonda oluğu gibi maksimum olabilirlik (maximum likelyhood) yadımıyla seçtiğimiz kayıp fonksiyonunun sağlamasını yapacağız.</p>
+<h3 id="Olabilirliğin-Logaritması-(Log-Likelihood)">
+<a class="anchor" href="#Olabilirli%C4%9Fin-Logaritmas%C4%B1-(Log-Likelihood)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Olabilirliğin Logaritması (Log-Likelihood)<a class="anchor-link" href="#Olabilirli%C4%9Fin-Logaritmas%C4%B1-(Log-Likelihood)"> </a>
 </h3>
+<p>Softmaks fonksiyonu $\hat{\mathbf{y}}$ vektörünü verir ve bunu verilen $x$ girdisine karşılık her sınıfın koşullu olasılığı olarak yorumlarız. Örneğin, $\hat{y}_1$ = $\hat{P}(y=\mathrm{cat} \mid \mathbf{x})$ gibi. Tahminle gerçek veriyi karşılaştırma için sınıfların</p>
 <p>The softmax function gives us a vector $\hat{\mathbf{y}}$,
 which we can interpret as estimated conditional probabilities
 of each class given the input $x$, e.g.,
@@ -495,9 +467,14 @@ This is equal to the ratio between the number of correct predictions and the tot
 
 
 
-  </div>
-<!-- from https://github.com/utterance/utterances -->
-<script src="https://utteranc.es/client.js" repo="unverciftci/derin_ogrenme" issue-term="title" label="blogpost-comment" theme="github-light" crossorigin="anonymous" async>
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="unverciftci/derin_ogrenme"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
 </script><a class="u-url" href="/derin_ogrenme/jupyter/2020/02/21/Linear-Siniflandirma.html" hidden></a>
 </article>
       </div>
@@ -521,11 +498,7 @@ This is equal to the ratio between the number of correct predictions and the tot
       </div>
     </div>
 
-    <div class="social-links">
-<ul class="social-media-list">
-<li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#github"></use></svg></a></li>
-<li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
-</ul>
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/derin_ogrenme/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
 </div>
 
   </div>

@@ -155,7 +155,7 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h3"><a href="#A%C4%9F-Yap%C4%B1s%C4%B1-(Network-Architecture)">Ağ Yapısı (Network Architecture) </a></li>
 <li class="toc-entry toc-h3"><a href="#Softmaks-%C4%B0%C5%9Flemi-(Softmax-Operation)">Softmaks İşlemi (Softmax Operation) </a></li>
-<li class="toc-entry toc-h3"><a href="#Vectorization-for-Minibatches">Vectorization for Minibatches </a></li>
+<li class="toc-entry toc-h3"><a href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1n%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)">Küçük Yığınlarını Vektörleştirme (Vectorization for Minibatches) </a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2">
@@ -254,8 +254,8 @@ $$
 \hat{\imath}(\mathbf{o}) = \operatorname*{argmax}_i o_i = \operatorname*{argmax}_i \hat y_i.
 $$<p>Sonuç olarak $\mathbf{o}$ vektörünü oluşturan sayılar, softmaks öncesi her sınıfın olasılıklarını belirleyen sayılardır. Vektör gösterimi ile ${\mathbf{o}}^{(i)} = \mathbf{W} {\mathbf{x}}^{(i)} + {\mathbf{b}}$,
 where ${\hat{\mathbf{y}}}^{(i)} = \mathrm{softmax}({\mathbf{o}}^{(i)})$ şeklinde yazabiliriz.</p>
-<h3 id="Vectorization-for-Minibatches">
-<a class="anchor" href="#Vectorization-for-Minibatches" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vectorization for Minibatches<a class="anchor-link" href="#Vectorization-for-Minibatches"> </a>
+<h3 id="Küçük-Yığınlarını-Vektörleştirme-(Vectorization-for-Minibatches)">
+<a class="anchor" href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1n%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Küçük Yığınlarını Vektörleştirme (Vectorization for Minibatches)<a class="anchor-link" href="#K%C3%BC%C3%A7%C3%BCk-Y%C4%B1%C4%9F%C4%B1nlar%C4%B1n%C4%B1-Vekt%C3%B6rle%C5%9Ftirme-(Vectorization-for-Minibatches)"> </a>
 </h3>
 <p>To improve computational efficiency and take advantage of GPUs,
 we typically carry out vector calculations for minibatches of data.

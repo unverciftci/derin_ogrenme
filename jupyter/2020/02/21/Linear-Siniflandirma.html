@@ -206,12 +206,12 @@ window.onload = wrap_img;
 <a class="anchor" href="#S%C4%B1n%C4%B1fland%C4%B1rma-(Classification)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sınıflandırma (Classification)<a class="anchor-link" href="#S%C4%B1n%C4%B1fland%C4%B1rma-(Classification)"> </a>
 </h2>
 <p>Konuya çabuk ısınmak adına, $2\times2$ boyutunda siyah-beyaz resimlerin sınıflandırılması örneği ile başlayalım. Her bir pikseli bir sayı ile gösterirsek, bir resim için $x_1, x_2, x_3, x_4$ ile gösterdiğimiz dört özellik belirlenmiş olur. Dahası, resimlerin "kedi", "tavuk" ve "köpek" sınıflarından birine ait olduğunu kabul edelim.</p>
-<p>Şimdi etiketlere yani resmin ait olduğu sınıfı nasıl ifade edeceğimize karar vermeliyiz. En doğal yol {kedi, tavuk, köpek} sınıflarını, birden üçe kadar olan tamsayılarla gösterip $y \in \{1, 2, 3\}$ biçiminde ifade etmektedir. BU şekilde bilgisayarın hafızasına yük olmayız. Sınıflar arasıda doğal bir sıralama söz konusu olsaydı problemimiz regresyon problemi olurdu ve bu tür etiketleri kullannabilirdik. Mesela {bebek, çokuk, genç, yetişkin, yaşlı} örneğinde olduğu gibi.</p>
+<p>Şimdi etiketlere yani resmin ait olduğu sınıfı nasıl ifade edeceğimize karar vermeliyiz. En doğal yol {kedi, tavuk, köpek} sınıflarını, birden üçe kadar olan tamsayılarla gösterip $y \in \{1, 2, 3\}$ biçiminde ifade etmektedir. Bu şekilde bilgisayarın hafızasına yük olmayız. Sınıflar arasıda doğal bir sıralama söz konusu olsaydı problemimiz regresyon problemi olurdu ve bu tür etiketleri kullannabilirdik. Mesela {bebek, çokuk, genç, yetişkin, yaşlı} örneğinde olduğu gibi.</p>
 <p>Ancak genellikle sınıflandırma problemlerinde sınıflar arasında doğal bir hiyerarşi yoktur. Neyse ki İstatistikçiler uzun yıllar önce buna bir çözüm buldular: <em>tek aktif kod</em> (one-hot encoding). Tek aktif kod, sınıf sayısı kadar bileşene sahip bir vektördür. Veri kümseindeki bir örnek için tek aktif kod vektörü oluşturulurken, örneğin ait olduğu bileşen $1$, diğer bilşenler $0$ alı alınır. Bu durumda yukarıdaki üçlü sınıflandırmada etiketler</p>
 <p>
-$$y \in \{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$$
+$$\mathbf{y} \in \{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$$
 </p>
-<p>şeklinde vektörler olur. Eğer $y$ vektörü $(1, 0, 0)$ ise "kedi", $(0, 1, 0)$ ise "tavuk" ve $(0, 0, 1)$ ise "köpek" belirtir.</p>
+<p>şeklinde vektörler olur. Eğer $\mathbf{y}$ vektörü $(1, 0, 0)$ ise "kedi", $(0, 1, 0)$ ise "tavuk" ve $(0, 0, 1)$ ise "köpek" belirtir.</p>
 <h3 id="Ağ-Yapısı-(Network-Architecture)">
 <a class="anchor" href="#A%C4%9F-Yap%C4%B1s%C4%B1-(Network-Architecture)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ağ Yapısı (Network Architecture)<a class="anchor-link" href="#A%C4%9F-Yap%C4%B1s%C4%B1-(Network-Architecture)"> </a>
 </h3>
@@ -231,7 +231,7 @@ $$<p>elde edilir. Bu hesabı aşağıdaki sinir ağı (neural network) diyagram�
 <p>Modelimizin çıktılarını olasılıklar olarak yorumlamak istiyoruz. Parametrelerimizi, verinin olabılırılığini maksimum yapacak şekilde belirleyeceğiz. Daha sonra da tahminler üretebilmek için, bir eşik belirleyeceğiz. Örneğin elde edilen olasılıklar üzerinden en büyüğüne karşılık gelen sınıfı seçeceğiz.</p>
 <p>Daha açık ifade edelim: $\hat{y}_k$ çıktısını verilen bir girdinin $k$ sınıfında olma olasılığı anlamını taşımasını istiyoruz. Bu durumda $\operatorname*{argmax}_k y_k$ işlemi sonucunda en büyük değere sahip sınıfı seçeriz. Mesela $\hat{y}_1$, $\hat{y}_2$, and $\hat{y}_3$ çıktıları $0.1$, $0.8$, and $0.1$ değerlerini alıyorsa, seçeceğimiz sınıf $2$ numaralı sınıftır, yani örneğimizdeki "tavuk" resmidir.</p>
 <p>Yukarıda ${o}$ ile gösterilen ve "logit" denilen sayılar modelin çıktıları gibi görünebilir. Ancak lineer katmanın çıktılarını olasılıklar gibi ele almak sorun çıkarabilir. Bunların toplamının $1$ olması gerekiyor. Hatta girdilere bağlı olarak negatif değerler bile alıyorlar. Bunlar olasılığın temel aksiyomlarını (kabullerini) ihlal ediyor.</p>
-<p>Bunları olasılıklarolarak alabilmemiz için her girdi için toplamlarının $1$ olması gerekiyor. Dahası kayıp fonksiyonunu da olasılıkların anlamlı olmasını sağlayacak şekilde seçmeliyiz. Modelimizin $0.5$ sonucunu verdiği tüm durumlarda bu örneklerin yarısının belirtilen sınıfa ait olduğunu düşünürüz. Buna <em>aratlama</em> (calibration) denir.</p>
+<p>Bunları olasılıklarolarak alabilmemiz için her girdi için toplamlarının $1$ olması gerekiyor. Dahası kayıp fonksiyonunu da olasılıkların anlamlı olmasını sağlayacak şekilde seçmeliyiz. Modelimizin $0.5$ sonucunu verdiği tüm durumlarda bu örneklerin yarısının belirtilen sınıfa ait olduğunu düşünürüz. Buna <em>ayarlama</em> (calibration) denir.</p>
 <p>Softmaks fonksiyonu 1959 yılında sosyal bilimci R. Duncan Luce tarafından bahsettiğimiz sınıflandırmaya benzer olan <em>seçim modeli</em> için bulundu. Elde edilen $o$ değerlerini negatif olmayan ve toplamları $1$ olan sayılara çevirmek, bunun yanında modelimizin türevlenebilir olmasını şu şekilde sağlayacağız: Bir $o$ sayısının üstel fonksiyon altındaki değerini diğer tüm sayıların üstellerinin toplamına oranlayacağız. Sayının üstelini almak sonucun negatif olmamasını, toplama oranlamak da sonuçların toplamının $1$ olmasını garanti eder. Matemaiksel olarak</p>
 $$
 \hat{y}_i = \frac{\exp(o_i)}{\sum_j \exp(o_j)} \quad
@@ -262,26 +262,18 @@ formunda yazılabilir.</p>
 <h3 id="Olabilirliğin-Logaritması-(Log-Likelihood)">
 <a class="anchor" href="#Olabilirli%C4%9Fin-Logaritmas%C4%B1-(Log-Likelihood)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Olabilirliğin Logaritması (Log-Likelihood)<a class="anchor-link" href="#Olabilirli%C4%9Fin-Logaritmas%C4%B1-(Log-Likelihood)"> </a>
 </h3>
-<p>Softmaks fonksiyonu $\hat{\mathbf{y}}$ vektörünü verir ve bunu verilen $x$ girdisine karşılık her sınıfın koşullu olasılığı olarak yorumlarız. Örneğin, $\hat{y}_1$ = $\hat{P}(y=\mathrm{kedi} \mid \mathbf{x})$ gibi. Tahminle gerçek durumu karşılaştırmak için modeli özelikler verildiğinde sınıfların ne kadar olası</p>
-<p>We can compare the estimates with reality
-by checking how probable the <em>actual</em> classes are
-according to our model, given the features.</p>
+<p>Softmaks fonksiyonu $\hat{\mathbf{y}}$ vektörünü verir ve bunu verilen $x$ girdisine karşılık her sınıfın koşullu olasılığı olarak yorumlarız. Örneğin, $\hat{y}_1$ = $\hat{P}(y=\mathrm{kedi} \mid \mathbf{x})$ gibi. Modelimizin tahminleri ile gerçek durumu karşılaştırmak için özelikler bilindiğinde sınıfların ne kadar olası durduğunu kontrol ederiz. Yani 
 $$
 P(Y \mid X) = \prod_{i=1}^n P(y^{(i)} \mid x^{(i)})
-\text{ and thus }
--\log P(Y \mid X) = \sum_{i=1}^n -\log P(y^{(i)} \mid x^{(i)}).
-$$<p>Maximizing $P(Y \mid X)$ (and thus equivalently minimizing $-\log P(Y \mid X)$)
-corresponds to predicting the label well.
-This yields the loss function
-(we dropped the superscript $(i)$ to avoid notation clutter):</p>
+$$</p>
+<p>olasılığına veya</p>
+$$
+-\log P(Y \mid X) = \sum_{i=1}^n -\log P(y^{(i)} \mid x^{(i)})
+$$<p>olabilirliğin logaritmasına bakılır. $P(Y \mid X)$ ifadesini maksimize etmek (yani $-\log P(Y \mid X)$ ifadesini minimum yapmak) etiketi iyi tahmin etmek anlamına gelir. Buradan</p>
 $$
 l = -\log P(y \mid x) = - \sum_j y_j \log \hat{y}_j.
-$$<p>For reasons explained later on, this loss function
-is commonly called the <em>cross-entropy</em> loss.
-Here, we used that by construction $\hat{y}$
-is a discrete probability distribution
-and that the vector $\mathbf{y}$ is a one-hot vector.
-Hence the sum over all coordinates $j$ vanishes for all but one term.
+$$<p>kayıp fonksiyonu elde edilir. (Gösterimin sade olması için $(i)$ üst indisi atılmıştır.) Daha sonra açıklanacak sebeplerden bu bu kayıp fonksiyonuna <em>çapraz entropi</em> (cross-entropy) denir. Burada $\hat{y}$ bir ayrık olasılık dağılımı ve $\mathbf{y}$ bir <em>tek aktif vektördür</em>. Doayısıyla tüm $j$'ler üzerinden alınan toplamda biri hariç tüm bileşenler ssıfır olur.</p>
+<p>Hence the sum over all coordinates $j$ vanishes for all but one term.
 Since all $\hat{y}_j$ are probabilities,
 their logarithm is never larger than $0$.
 Consequently, the loss function cannot be minimized any further

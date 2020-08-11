@@ -272,19 +272,7 @@ $$
 $$<p>olabilirliğin logaritmasına bakılır. $P(Y \mid X)$ ifadesini maksimize etmek (yani $-\log P(Y \mid X)$ ifadesini minimum yapmak) etiketi iyi tahmin etmek anlamına gelir. Buradan</p>
 $$
 l = -\log P(y \mid x) = - \sum_j y_j \log \hat{y}_j.
-$$<p>kayıp fonksiyonu elde edilir. (Gösterimin sade olması için $(i)$ üst indisi atılmıştır.) Daha sonra açıklanacak sebeplerden bu bu kayıp fonksiyonuna <em>çapraz entropi</em> (cross-entropy) denir. Burada $\hat{y}$ bir ayrık olasılık dağılımı ve $\mathbf{y}$ bir <em>tek aktif vektördür</em>. Doayısıyla tüm $j$'ler üzerinden alınan toplamda biri hariç tüm bileşenler ssıfır olur.</p>
-<p>Hence the sum over all coordinates $j$ vanishes for all but one term.
-Since all $\hat{y}_j$ are probabilities,
-their logarithm is never larger than $0$.
-Consequently, the loss function cannot be minimized any further
-if we correctly predict $y$ with <em>certainty</em>,
-i.e., if $P(y \mid x) = 1$ for the correct label.
-Note that this is often not possible.
-For example, there might be label noise in the dataset
-(some examples may be mislabeled).
-It may also not be possible when the input features
-are not sufficiently informative
-to classify every example perfectly.</p>
+$$<p>kayıp fonksiyonu elde edilir. (Gösterimin sade olması için $(i)$ üst indisi atılmıştır.) Daha sonra açıklanacak sebeplerden bu bu kayıp fonksiyonuna <em>çapraz entropi</em> (cross-entropy) denir. Burada $\hat{y}$ bir ayrık olasılık dağılımı ve $\mathbf{y}$ bir <em>tek aktif vektördür</em>. Doayısıyla tüm $j$'ler üzerinden alınan toplamda biri hariç tüm toplananlar sıfır olur. Ayrıca $\hat{y}_j$ ifadeleri olasılıklar olduklarından logarıtmaları asla sıfırdan büyük değildir. Dolayısıyla, eğer $y$ değerini doğru tahmin etmişsek kayıp fonksiyonu daha fazla azaltılamaz yani sıfır olur. Yani doğru $y$ için $P(y \mid x) = 1$ olacağından kayıp fonksiyonu en küçük değerini alır. Ancak bu çoğunlukla mümkün değildir. Örneğin veri kümemizde hatalı etiketler olabilir (yanlış etiketleme gibi). Ayrıca girdilerin özellikleri çok fazla bilgi verici değilse, her örneği sınıflanırmamız mümkün olamayabilir.</p>
 <h3 id="Softmax-and-Derivatives">
 <a class="anchor" href="#Softmax-and-Derivatives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softmax and Derivatives<a class="anchor-link" href="#Softmax-and-Derivatives"> </a>
 </h3>

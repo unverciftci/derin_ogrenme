@@ -109,7 +109,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      10 min read
     
 </span></p>
 
@@ -147,7 +147,10 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#İşlemler">İşlemler </a></li>
 <li class="toc-entry toc-h3"><a href="#Broadcasting-Mekanizması">Broadcasting Mekanizması </a></li>
 <li class="toc-entry toc-h3"><a href="#İndexleme-ve-Dilimleme">İndexleme ve Dilimleme </a></li>
-<li class="toc-entry toc-h3"><a href="#Hafızaya-Kaydetme">Hafızaya Kaydetme </a></li>
+<li class="toc-entry toc-h3"><a href="#Hafıza-Tasarrufu">Hafıza Tasarrufu </a></li>
+<li class="toc-entry toc-h3"><a href="#Diğer-Python-Nesnelerine-Dönüştürme">Diğer Python Nesnelerine Dönüştürme </a></li>
+<li class="toc-entry toc-h3"><a href="#Özet">Özet </a></li>
+<li class="toc-entry toc-h3"><a href="#Alıştırmalar">Alıştırmalar </a></li>
 </ul>
 </li>
 </ul><!--
@@ -763,8 +766,8 @@ Ayrıca birden fazla tensörü, daha büyük bir tensör oluşturmak için onlar
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Hafızaya-Kaydetme">
-<a class="anchor" href="#Haf%C4%B1zaya-Kaydetme" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Hafızaya Kaydetme</strong><a class="anchor-link" href="#Haf%C4%B1zaya-Kaydetme"> </a>
+<h3 id="Hafıza-Tasarrufu">
+<a class="anchor" href="#Haf%C4%B1za-Tasarrufu" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Hafıza Tasarrufu</strong><a class="anchor-link" href="#Haf%C4%B1za-Tasarrufu"> </a>
 </h3>
 </div>
 </div>
@@ -852,6 +855,103 @@ Neyse ki, yerinde işlem yapmak kolaydır. Dilim notasyonu ile önceden ayrılm�
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Diğer-Python-Nesnelerine-Dönüştürme">
+<a class="anchor" href="#Di%C4%9Fer-Python-Nesnelerine-D%C3%B6n%C3%BC%C5%9Ft%C3%BCrme" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Diğer Python Nesnelerine Dönüştürme</strong><a class="anchor-link" href="#Di%C4%9Fer-Python-Nesnelerine-D%C3%B6n%C3%BC%C5%9Ft%C3%BCrme"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpy tensörüne dönüştürmek veya tam tersi kolaydır. Dönüştürülen sonuç hafızayı paylaşmaz. Bu küçük sıkıntı aslında oldukça önemli: CPU veya GPU'lar üzerinde işlemler gerçekleştirdiğinizde, Python'un Numpy paketinin aynı bellek parçasına sahip başka birşey yapmak isteyip istemediğini görmeyi bekleyerek hesaplamayı durdurmak istemezisin.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">()</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>1-boyutlu bir tensörü Python skalerine dönüştürmek için, $item$ fonksiyonunu veya Python'un gömülü fonksiyonlarını çağırabiliriz.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.5</span><span class="p">])</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Özet">
+<a class="anchor" href="#%C3%96zet" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Özet</strong><a class="anchor-link" href="#%C3%96zet"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Derin öğrenmede veri depolamak ve yönetmek için ana arayüz tensördür(n-boyutlu dizi). Bu, temel matematik işlemleri, broadcasting, indeksleme, dilimleme, hafıza tasarrufu ve diğer Python nesnelerine dönüştürme gibi birçok işlevsellik sağlar.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Alıştırmalar">
+<a class="anchor" href="#Al%C4%B1%C5%9Ft%C4%B1rmalar" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Alıştırmalar</strong><a class="anchor-link" href="#Al%C4%B1%C5%9Ft%C4%B1rmalar"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$1)$ Bu bölümdeki kodları çalıştır. Bu bölümdeki $X == Y$ koşullu ifadesini $X &lt; Y$ veya $X &gt; Y$ ile değiştir ve daha sonra ne çeşit bir tensör elde ettiğinizi görün.</p>
+<p>$2)$ Broadcasting mekanizmasındaki elemanla çalışan iki tensörü başka boyutlu tensörler ile değiştirin. Örneğin; 3-boyutlu tensötler ile. Sonuç beklendiği gibi mi?</p>
+
+</div>
+</div>
+</div>
 </div>
 
 

@@ -179,9 +179,17 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/unverciftci/derin_ogrenme/blob/master/_notebooks/2020-02-22-olasilik.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Makine Öğrenmesi tamamen tahminler üretme işidir. Örneğin klinik geçmişi göz önüne alındığında, bir hastanın gelecek yıl kalp krizi geçirme <em>olasılığını</em> tahmin etmek isteyebiliriz. Anormallik tespitinde, bir uçağın jet motorundan gelen bir dizi okumanın normal çalışma için ne kadar <em>olası</em> olduğunu değerlendirmek isteyebiliriz. Pekiştirmeli öğrenmede, robotun ya da daha genel olarak etmenin bir ortamda akıllıca davranmasını isteriz. Bunun anlamı, mevcut eylemlerin her biri altında yüksek bir ödül alma olasılığını düşünmemiz gerektiğidir. Tavsiye sistemleri inşa ettiğimizde de olasılıkları düşünmemiz gerekir. Örneğin, büyük bir online kitapçı için çalıştığımızı varsayalım. Belirli bir kullanıcının belirli bir kitabı satın alma olasılığını tahmin etmek isteyebiliriz. Tüm bu durumlar için olasılık dilini kullanmalıyız. Bir çok kurs, ana bilim dalları, tezler, kariyerler ve hatta bölümler olasılık bilimi üzerine kurulmuştur. Doğal olarak, bu bölümdeki amacımız tüm olasılık konularını öğretmek değildir. Bunun yerine sıfırdan, size ilk derin öğrenme modellerinizi oluşturmaya başlayabileceğiniz kadar olasılık bilgisi öğretmeyi ve isterseniz konunun kendi kendinize keşfetmeye başlayabileceğiniz kadarlık özünü kavratmak istiyoruz.</p>
 <p>Açık açık ifade etmesek veya somut örnekler vermesek de, önceki bölümlerde olaslığı kullandık. Şimdi ilk örneğimizle başlayaşım: kedi ve köpekleri fotoğraflardan ayırt etmek. Bu basit gelebilir ama aslında zor bir problemdir. Sorunun zorluğu ilk planda görüntünün çözünürlüğüne bağlı olabilir.</p>
-<p><img src="https://github.com/d2l-ai/d2l-en-colab/blob/master/img/cat_dog_pixels.png?raw=1" alt="Images of varying resolutions ($10 \times 10$, $20 \times 20$, $40 \times 40$, $80 \times 80$, and $160 \times 160$ pixels)."></p>
+<p><img src="https://raw.githubusercontent.com/unverciftci/derin_ogrenme/master/_notebooks/my_icons/cat-dog-pixels.png" alt="Images of varying resolutions ($10 \times 10$, $20 \times 20$, $40 \times 40$, $80 \times 80$, and $160 \times 160$ pixels)."></p>
 
 <pre><code>Değişken çözünürlükteki resimler (10x10, 20x20, 40x40, 80x80 ve 160x160 piksel)
 </code></pre>
